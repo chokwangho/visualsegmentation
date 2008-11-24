@@ -1,0 +1,5 @@
+content StyleRetriever chrome/content/
+overlay chrome://browser/content/browser.xul chrome://StyleRetriever/content/overlay.xul
+
+
+
