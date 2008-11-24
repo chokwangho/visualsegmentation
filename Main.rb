@@ -77,7 +77,11 @@ if __FILE__ == $0
   #puts extractor.blockPool
   detector = SeparatorDetector.new(extractor.blockPool, bodyWidth, bodyHeight)    
   detector.evaluateRelation
-  detector.test
+  detector.assignWeights
+  #detector.test
+
+  detector.drawSeparators(doc, body)
+
 
 # step 3  
   constructor = StructureConstructor.new    

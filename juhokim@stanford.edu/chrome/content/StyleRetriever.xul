@@ -6,42 +6,26 @@
    title="Style Retriever"
    orient="horizontal"
    xmlns:html="http://www.w3.org/1999/xhtml"
-   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-   >
+   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
    
+  <script type="application/x-javascript" src="chrome://jslib/content/jslib.js" />   
+  <script type="application/x-javascript" src="io.js"/>
   <script type="application/x-javascript" src="jquery.js"/>
-  <script type="application/x-javascript" src="StyleRetriever.js"/>
 
+  
+  <script type="application/x-javascript" src="StyleRetriever.js"/>
 
   <vbox flex="1">
     <hbox>
       <label value="Enter a URL:"/>
       <textbox id="url" flex="1" value="file:///E:/Documents%20and%20Settings/My%20Documents/Aptana%20Studio/VisualParser/cs147.html"/>
-      <button label="Go!" oncommand="change_url(event)"/>
+      <button label="Go!" oncommand="loadPage()"/>
     </hbox>
-    <description value="Current page:"/>
+
     <hbox flex="1">
       <browser id="contentview" type="content-primary" src="file:///E:/Documents%20and%20Settings/My%20Documents/Aptana%20Studio/VisualParser/cs147.html" flex="1"/>    
-      <vbox>
-       <toolbox flex="1" style="margin:0;">
 
-                <html:div id="todo-list" style="background:#F0F0F0;" flex="1">
-                        FOOOOOOOOOOO
-                </html:div>
-
-                <html:script>
-                        function replaceText(){
-                                alert(jQuery);
-                                $('#todo-list').html('BAAAAAAAAR');
-                        }
-                </html:script>
-
-                <menubar id="sample-menubar">
-                	<button label="CLICKME" oncommand="replaceText()"/>
-                </menubar>
-        </toolbox>
-
-      
+      <vbox>   
         <groupbox>
           <caption label="Stats"/>
           <grid flex="1">
@@ -50,18 +34,8 @@
               <column flex="1"/>
             </columns>
             <rows>
-              <row>
-                <label value="Word count"/>
-                <textbox class="count" id="wordcount" value="N/A" readonly="true"/>
-              </row>
-              <row>
-                <label value="Character count"/>
-                <textbox class="count" id="charcount" value="N/A" readonly="true"/>
-              </row>
-              <row>
-                <label value="Element count"/>
-                <textbox class="count" id="elemcount" value="N/A" readonly="true"/>
-              </row>
+				<button label="Retrieve Style!" oncommand="retrieve();" />  
+				<button label="Save as a file" oncommand="save();" />  
             </rows>
           </grid>
         </groupbox>
@@ -69,4 +43,5 @@
       </vbox>
     </hbox>
   </vbox>
+
 </window>
