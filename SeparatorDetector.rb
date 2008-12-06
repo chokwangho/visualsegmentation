@@ -120,6 +120,7 @@ class SeparatorDetector
     b_sx, b_sy = block.offsetLeft, block.offsetTop
     b_ex, b_ey = block.offsetLeft + block.width, block.offsetTop + block.height
     # update the first separator and create a new one
+	newSeparator = nil
     if status == CONTAINING1
       newSeparator = Separator.new(separator.start_x, b_ey, separator.end_x, separator.end_y)
       addHorizontalSeparator newSeparator
@@ -129,6 +130,8 @@ class SeparatorDetector
       addVerticalSeparator newSeparator
       updateVerticalSeparator(separator, separator.start_x, separator.start_y, b_sx, separator.end_y)
     end 
+	newSeparator.add_2_tl_side(block)
+    separator.add_2_br_side(block)
   end
   
   def crossingUpdate(separator, block, status)
@@ -136,13 +139,16 @@ class SeparatorDetector
     b_ex, b_ey = block.offsetLeft.to_i + block.width.to_i, block.offsetTop.to_i + block.height.to_i
     if status == CROSSING1
       updateHorizontalSeparator(separator, separator.start_x, separator.start_y, separator.end_x, b_sy)
+	  separator.add_2_br_side(block)
     elsif status == CROSSING2
       updateHorizontalSeparator(separator, separator.start_x, b_ey, separator.end_x, separator.end_y)
+	  separator.add_2_tl_side(block)
     elsif status == CROSSING3
       updateVerticalSeparator(separator, separator.start_x, separator.start_y, b_sx, separator.end_y)
+	  separator.add_2_br_side(block)
     elsif status == CROSSING4
       updateVerticalSeparator(separator, b_ex, separator.start_y, separator.end_x, separator.end_y)
-
+	  separator.add_2_tl_side(block)
     end
   end
   

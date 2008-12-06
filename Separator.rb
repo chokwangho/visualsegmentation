@@ -1,13 +1,13 @@
 class Separator
   
-  attr_accessor :start_x, :start_y, :end_x, :end_y, :tl_side, :br_side  # start and end pixel
+  attr_accessor :start_x, :start_y, :end_x, :end_y, :tl_side, :br_side  
   @@id = 0
   def initialize(sx, sy, ex, ey)
     @@id = @@id + 1 
     @id = @@id  # index starting from 1
     update(sx, sy, ex, ey)
-	tl_side = Array.new
-	bl_side = Array.new
+	@tl_side = Array.new
+	@br_side = Array.new
   end
   
   def to_s
@@ -23,10 +23,10 @@ class Separator
   end
   
   def add_2_tl_side(block)
-  
+	@tl_side.push(block)
   end
   
   def add_2_br_side(block)
-  
+	@br_side.push(block)
   end
 end
