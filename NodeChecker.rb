@@ -2,29 +2,18 @@ require 'rubygems'
 require 'hpricot'
 
 class NodeChecker
-  def initialize
-    
-  end
-  def to_s
-    
-  end
-#the DOM node corresponding to free text, which does not have an html tag.
+
   def isTextNode(node)
     return node.text?
   end
   
-#Inline node with only text node children is a virtual text node.
-#Inline node with only text node and virtual text node children is a virtual text node.  
   def isVirtualTextNode(node)
-    if isInlineNode(node)
+	if !isInlineNode(node)
       return false
     end
     if node.respond_to? :each_child 
       node.each_child do |child|
-        unless isTextNode(child)
-          return false
-        end
-        unless isVirtualTextNode(child)
+        if !(isTextNode(child) || isVirtualTextNode(child))
           return false
         end
       end
@@ -33,26 +22,23 @@ class NodeChecker
   end
   
 #a node that can be seen through the browser. The node’s width and height are
-#not equal to zero.  
+#not equal to zero -- DO THIS!
   def isValidNode(node)
     #TODO: need to calculate width & height
+	
     return true  
   end
   
-  def getTagName(node)
+def getTagName(node)
     #retrieve the tag name
     str = node.to_s
     s = str.slice(/<\w+/)
     unless s.nil?
       tag = s[1,s.length]
     end
-    #return tag
-    #regex = "/<\/?\w+((\s+(\w|\w[\w-]*\w)(\s*=\s*(?:\".*?\"|'.*?'|[^'\">\s]+))?)+\s*|\s*)\/?>/i"
-  end
+end
 
-#the DOM node with inline text HTML tags, which affect the appearance of
-#text and can be applied to a string of characters without introducing line break. Such tags
-#include <B>, <BIG>, <EM>, <FONT>, <I>, <STRONG>, <U>, etc.
+#VERIFY
   def isInlineNode(node)
     if node.comment?
       return true
