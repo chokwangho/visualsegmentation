@@ -132,20 +132,20 @@ class BlockExtractor
   end  
   
   def isDividable(block, level)
-    heuristicArray = Array.new(14, 0) 
+    heuristicArray = Array.new(13, 0) 
     tag = @nodeChecker.getTagName(block.node)
     inlineNodeFlag = @nodeChecker.isInlineNode(block.node)
     case tag   
-    when "div"
-		heuristicArray[1] = 1
-		heuristicArray[2] = 1
-		heuristicArray[3] = 0
-        heuristicArray[4] = 1
-        heuristicArray[6] = 1
-		heuristicArray[7] = 0            
-        heuristicArray[9] = 1
-        heuristicArray[10] = 0   
-        heuristicArray[12] = 1     
+    when "div"  # 1, 2, 4, 6, 8, 11
+  		heuristicArray[1] = 1
+  		heuristicArray[2] = 1
+  		#heuristicArray[3] = 0
+      heuristicArray[4] = 1
+      heuristicArray[6] = 1
+		  #heuristicArray[7] = 0            
+      heuristicArray[8] = 1
+      #heuristicArray[9] = 0   
+      heuristicArray[11] = 1     
 =begin
     when "table"  # 1, 2, 3, 7, 9, 12
       heuristicArray[1] = 1
@@ -203,11 +203,10 @@ class BlockExtractor
         heuristicArray[2] = 1
         heuristicArray[3] = 0
         heuristicArray[4] = 1
-        heuristicArray[6] = 0
-		heuristicArray[7] = 0            
-        heuristicArray[9] = 1
-        heuristicArray[10] = 1   
-        heuristicArray[12] = 1         
+        heuristicArray[6] = 0           
+        heuristicArray[8] = 1
+        heuristicArray[9] = 1   
+        heuristicArray[11] = 1         
       end 
 #	end
     
@@ -351,20 +350,13 @@ If one of the child nodes of the DOM node has HTML tag <HR>, then divide this DO
       end
     end      
   end
-
-=begin
-Rule 7
-=end
-  def rule7(block)
-	return
-  end
   
 =begin
-Rule 8
+Rule 7
 If the background color of this node is different from one of its children's divide this node and at the same time
 the child node with different background color will not be divided this round!
 =end
-  def rule8(block)
+  def rule7(block)
 	differing_children = Array.new
 	
 	if block.node.respond_to? :each_child 
@@ -401,11 +393,11 @@ the child node with different background color will not be divided this round!
   end
 
 =begin
-Rule 9
+Rule 8
 If the node has at least one text node child or at least one virtual text node child, and the node's relative size is smaller than a threshold, 
 then the node cannot be divided.
 =end
-  def rule9(block)
+  def rule8(block)
     conditionFlag = false
     if block.node.respond_to? :each_child 
       block.node.each_child do |child|
@@ -430,10 +422,10 @@ then the node cannot be divided.
   end
 
 =begin
-Rule 10
+Rule 9
 If the child of the node with maximum size are smaller than a threshold, do not divide this node.
 =end
-  def rule10(block)
+  def rule9(block)
     max_width = 0
 	max_height = 0
     if block.node.respond_to? :each_child 
@@ -454,26 +446,26 @@ If the child of the node with maximum size are smaller than a threshold, do not 
   end
 
 =begin
-	Rule 11 
+	Rule 10 
 	If previous sibling node has not been divided, do not divide this node
 =end
-  def rule11(block)
+  def rule10(block)
 	return
   end
 
 =begin
-	Rule 12 
+	Rule 11 
 	Divide this node.
 =end
-  def rule12(block)
+  def rule11(block)
 	return DIVIDE
   end
 
 =begin
-Rule 13
+Rule 12
 Do not divide this node.
 =end
-  def rule13(block)
+  def rule12(block)
 	return NOT_DIVIDE
 	#TODO: DOC based on "the html tag and size of the node"
   end

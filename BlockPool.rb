@@ -2,7 +2,6 @@ class BlockPool
 
   def initialize
     @blockPool = Array.new
-
   end
   
   def to_s
@@ -24,5 +23,4 @@ class BlockPool
   def each  # for block traversal outside the class
     @blockPool.each {|x| yield x}
   end
-
 end
