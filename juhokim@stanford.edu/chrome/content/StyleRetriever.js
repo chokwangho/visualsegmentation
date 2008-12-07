@@ -1,29 +1,6 @@
 $(document).ready(function(){
-	//alert(JS_LIB_VERSION);
-				
-
-	// do whatever you need to the created file
-	//alert(file.path);
-	
-
-
 });		
-//function fileIO()
-//{
-//	var fileIn = FileIO.open('test.txt');
-//	alert(fileIn.exists());
-//	if (fileIn.exists()) {
-//		var fileOut = FileIO.open('copytest.txt');
-//		var str = FileIO.read(fileIn);
-//		var rv = FileIO.write(fileOut, str);
-//	 	alert('File write: ' + rv);
-//	 	rv = FileIO.write(fileOut, str, 'a');
-//	 	alert('File append: ' + rv);
-//	 	rv = FileIO.unlink(fileOut);
-//	 	alert('File unlink: ' + rv);
-//	 }	
-//}
-     
+   
 
 function loadPage(event)
 {
@@ -31,83 +8,54 @@ function loadPage(event)
     var contentview = document.getElementById("contentview");	
 	contentview.setAttribute("src", urlbox.value);
 }
-				
-//Invoked in response to a click on the "Go!" button
-//		
-//font-family
-//font-size
-//font-weight
-//background-color
-//height: length / percentage / auto
-//width: length / percentage / auto
-function findPos(obj) {
-	var curleft = curtop = 0;
-	if (obj.offsetParent) {
-		curleft = obj.offsetLeft
-		curtop = obj.offsetTop
-		while (obj = obj.offsetParent) {
-			curleft += obj.offsetLeft
-			curtop += obj.offsetTop
-		}
-	}
-	return [curleft,curtop];
-}
 
+// Make all font-weight properties into integer
+function getFontWeight(inputWeight)
+{
+	var weight = inputWeight;
+	
+	//normal | bold | bolder | lighter | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | inherit 
+	switch(inputWeight)
+	{
+		case "normal":
+			weight = 400;
+		break;
+		case "bold":
+			weight = 700;
+		break;
+		// The rest is unexpected: it's handled by jQuery css function. so just set it to 400
+		case "bolder":
+		case "lighter":
+		case "inherit":
+			weight = 400;
+		break;
+	}
+	return weight;
+}
 				
 function retrieve(event)
 {
 	var embedded_doc = document.getElementById("contentview").contentDocument;
-	alert($(embedded_doc).find("html > body > div").children().css("font-size"));
-    
-	var res="";
-      $(embedded_doc).find("html > body").children().each(function (i) 
-	  {
-		//res = res + $(this).width();
-		//$(this).css({ backgroundColor:"gray", border:"1px dashed red" });
-		res = res + " " + $(this).width() + "/" + $(this).height();
-
-		//res = res + " " + $(this).css("font-size");
-      });
-    //alert(res);
-
 	
 	var nodes = embedded_doc.getElementsByTagName("html")[0].getElementsByTagName("*");
 	var result = "";
+	var fontWeight; 
 	for(var i = 0 ; i < nodes.length ; i++) 
 	{
-		$(nodes[i]).attr( { myOffsetLeft:nodes[i].offsetLeft, myOffsetTop:nodes[i].offsetTop, myWidth:$(nodes[i]).width(), myHeight:$(nodes[i]).height(), myBackgroundColor:$(nodes[i]).css("background-color"), myColor:$(nodes[i]).css("color"), myFontFamily:$(nodes[i]).css("font-family"), myFontSize:$(nodes[i]).css("font-size"), myFontWeight:$(nodes[i]).css("font-weight") } );
-		//result = result + " " + left + " " + top;
+		fontWeight = getFontWeight(embedded_doc.defaultView.getComputedStyle(nodes[i],null).getPropertyValue("font-weight"));
+		$(nodes[i]).attr( { 
+			myOffsetLeft:nodes[i].offsetLeft, 
+			myOffsetTop:nodes[i].offsetTop, 
+			myWidth:$(nodes[i]).width(), 
+			myHeight:$(nodes[i]).height(), 
+			myBackgroundColor:embedded_doc.defaultView.getComputedStyle(nodes[i],null).getPropertyValue("background-color"),
+			myColor:embedded_doc.defaultView.getComputedStyle(nodes[i],null).getPropertyValue("color"), 
+			myFontFamily:embedded_doc.defaultView.getComputedStyle(nodes[i],null).getPropertyValue("font-family"), 
+			myFontSize:embedded_doc.defaultView.getComputedStyle(nodes[i],null).getPropertyValue("font-size"), 
+			myFontWeight:fontWeight 
+		} );	
 	}
-	//alert (nodes.length);
-	//alert (result);
 	alert("Style retrieved successfully.");
-	//alert(embedded_doc.getElementsByTagName("html")[0].innerHTML);
-//	alert($(embedded_doc).find("html > body > div").size());
-//	alert(findPos(embedded_doc.getElementById("briefinfo")));
-//	alert($(embedded_doc).find("html > body > div").children().css("font-size"));
-//	temp = $(embedded_doc).find("html > body").css("font-size");
-//	$(embedded_doc).find("html > body").css("font-size", "32px");
-//	alert($(embedded_doc).find("html > body").css("font-size"));
-//	$(embedded_doc).find("html > body").append("<b>Hello</b>");
-//	alert("temp: " + temp);
-	//alert($(embedded_doc).find("html > body > #maininfo").children().css("font-size"));	
-	//alert($(embedded_doc).find("html > body > #briefinfo").children().css("font-size"));	
-//	alert($(embedded_doc).find("html > body").css("width"));
-	  	   
-//	$(embedded_doc).find("html > body > div > #briefinfo").css("background-color", "green");  	   
-//	$(embedded_doc).find("html > body > #maininfo").css("font-weight", "bold");  		
-//	$(embedded_doc).find("html > body > div").children().each(function() {
-
-    // now add a paragraph count in front of each of them.  Notice how we use the
-    // $(this) variable to reference each of the paragraph elements individually.
-	//	alert(increment);	
-    //$(this).text(increment + ". " + $(this).text());
-    //increment++;
-	
-	//});
-
-
-	//document.getElementById("contentview").contentDocument.documentElement.innerHTML = "hello";		
 }
 
 
@@ -115,8 +63,6 @@ function save(event)
 {
 	var embedded_doc = document.getElementById("contentview").contentDocument
 	var data = 	embedded_doc.getElementsByTagName("html")[0].innerHTML;	
-	//alert(data);
-	//alert(data.length);
 	
 	var filename = "retrieved.html"
 	var file = Components.classes["@mozilla.org/file/directory_service;1"]
