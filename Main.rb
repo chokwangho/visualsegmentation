@@ -15,8 +15,8 @@ end
 
 def vips_algorithm (block, body, doc)
 	extractor = BlockExtractor.new
-	if block.node.respond_to? :each_child 
-        block.node.each_child do |child|
+	if block.node.respond_to? :each_child       
+		block.node.each_child do |child|
           extractor.divideDOMTree(child, block, 10, doc)
         end
 	
@@ -28,11 +28,13 @@ def vips_algorithm (block, body, doc)
 		constructor = StructureConstructor.new(detector.blockPool, detector.separatorList, block)
 		constructor.buildTree
 		puts "NUM CHILDREN: #{block.children.size}"
+
 		detector.blockPool.each { |leaf_block|
 			if (leaf_block.doc <= PDOC)
 				vips_algorithm(leaf_block, body, doc)
 			end
 		}
+
 	end
 end
 
@@ -50,6 +52,8 @@ if __FILE__ == $0
   root_block = extractor.create_block(root_node, nil, 10)	#TODO: make this a static function of the class
   vips_algorithm(root_block, body, doc)
 
+  btree = BlockTree.new(root_block)
+  
   html=""
   html = html + "<div style='left:" + root_block.children[2].offsetLeft.to_s + "px; top:" + root_block.children[2].offsetTop.to_s + "px;width:" + root_block.children[2].width.to_s
     html = html + "px;height:" + root_block.children[2].height.to_s

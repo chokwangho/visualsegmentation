@@ -29,35 +29,47 @@ class StructureConstructor
 		end
 	}
   
-	puts "MIN_WEIGHT: #{min_weight} MIN_INDEX: #{min_index}"
-	puts "LIST_SIZE: #{@separatorList.size}"
+	#puts "MIN_WEIGHT: #{min_weight} MIN_INDEX: #{min_index}"
+	#puts "LIST_SIZE: #{@separatorList.size}"
 
 	combine = Array.new
 	index = min_index
 	while ((@separatorList.size > 0) && (index < @separatorList.size) && (@separatorList[index].weight == min_weight) && (@separatorList[index].orientation==@separatorList[min_index].orientation))
-		puts "INDEX: #{index}"
 		combine.push(@separatorList[index])
 		@separatorList.delete_at(index)
 	end
 
-	combine.sort! {|x, y| y <=> x}
-	
-	#TODO: USE HASH
-	blockArray = Array.new
-	blockArray.concat(combine[0].tl_side)
+	blockHash = Hash.new
 	combine.each { |c|
-		blockArray.concat(c.br_side)
+		c.tl_side.each{ |tl|
+			blockHash[tl] = 0
+		}
+		c.br_side.each{ |br|
+			blockHash[br] = 0
+		}
 	}
 
+=begin
+	blockHash.each_key { |b|
+		puts "#{b.offsetTop} : #{b.tag} + #{b.children}"
+	}
+=end
+
+	blockArray = Array.new
+	blockArray.concat(blockHash.keys)
+	blockArray.each{|b| b.orientation = combine[0].orientation}
+	blockArray.sort! {|x,y| y<=>x}
+	
 =begin
 	blockArray.each { |b|
 		puts "#{b.offsetTop} : #{b.tag} + #{b.children}"
 	}
 =end
+
 	if(@separatorList.size==0)
 		@parent.children = blockArray
-		blockArray.each { |c|
-		c.parent = @parent }
+		blockArray.each { |k|
+		k.parent = @parent }
 	else
 		create_block(blockArray)
 	end
@@ -66,7 +78,7 @@ class StructureConstructor
 
   def create_block(children)
 		
-	block = Block.new(nil, "CREATED")
+	block = Block.new(nil, nil)
     
 	min_x, max_x = children[0].offsetLeft, children[0].offsetLeft + children[0].width
 	min_y, max_y = children[0].offsetTop, children[0].offsetTop + children[0].height
