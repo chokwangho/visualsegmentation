@@ -1,6 +1,6 @@
 
 class Block
-  attr_accessor :doc, :node, :tag, :offsetLeft, :offsetTop, :width, :height, :rel_width, :rel_height, :bg_color, :fontsize, :fontweight
+  attr_accessor :doc, :node, :tag, :offsetLeft, :offsetTop, :width, :height, :rel_width, :rel_height, :bg_color, :fontsize, :fontweight, :parent, :children, :separators
   @@id = 0
   def initialize(node, tag)
     @doc = 0 # degree of coherence
@@ -8,6 +8,9 @@ class Block
     @tag = tag
     @@id = @@id + 1 
     @id = @@id
+	@parent = nil
+	@children = nil
+	@separators = Array.new # 0 - 4 {top, left, bottom, right}
   end
   
   def to_s

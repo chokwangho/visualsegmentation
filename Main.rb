@@ -4,6 +4,7 @@ require 'open-uri'
 require 'BlockExtractor'
 require 'SeparatorDetector'
 require 'StructureConstructor'
+require 'BlockTree'
 
 def visualizeSections(html_doc, location)
   html_file = File.new("new.html", "w")
@@ -34,7 +35,14 @@ if __FILE__ == $0
 
 
 # step 3
-  constructor = StructureConstructor.new
+  constructor = StructureConstructor.new(detector.blockPool, detector.separatorList)
+  root = constructor.buildTree
+  puts "ROOT OFFSET: #{root.offsetTop}"
+  html=""
+  html = html + "<div style='left:" + root.offsetLeft.to_s + "px; top:" + root.offsetTop.to_s + "px;width:" + root.width.to_s
+    html = html + "px;height:" + root.height.to_s
+    html = html + "px;background-color:gray;border:0px;z-index:400000;position:relative;float:center;!important'></div>"
+  body.append(html)
   #Permitted Degree of Coherence
   # to achieve different granularities of content structure for different applications.
   # The smaller the PDoC is, the coarser the content structure would be.
