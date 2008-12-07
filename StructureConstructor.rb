@@ -4,11 +4,12 @@ require 'BlockTree'
 
 class StructureConstructor
 
-  attr_accessor :blockPool, :separatorList
+  attr_accessor :blockPool, :separatorList, :parent
 
-  def initialize(blockPool, separatorList)
+  def initialize(blockPool, separatorList, parent)
     @blockPool = blockPool
 	@separatorList = separatorList
+	@parent = parent
   end
   
   def to_s
@@ -29,34 +30,38 @@ class StructureConstructor
 	}
   
 	puts "MIN_WEIGHT: #{min_weight} MIN_INDEX: #{min_index}"
-	
+	puts "LIST_SIZE: #{@separatorList.size}"
+
 	combine = Array.new
 	index = min_index
-	while ((@separatorList.size > 0) && (@separatorList[index].weight == min_weight) && (@separatorList[index].orientation==@separatorList[min_index].orientation))
+	while ((@separatorList.size > 0) && (index < @separatorList.size) && (@separatorList[index].weight == min_weight) && (@separatorList[index].orientation==@separatorList[min_index].orientation))
+		puts "INDEX: #{index}"
 		combine.push(@separatorList[index])
 		@separatorList.delete_at(index)
 	end
-	
-	puts "Array size: #{combine.size}"
-	puts "Array size of separator list: #{@separatorList.size}"
 
 	combine.sort! {|x, y| y <=> x}
 	
-	#sort separators
+	#TODO: USE HASH
 	blockArray = Array.new
 	blockArray.concat(combine[0].tl_side)
 	combine.each { |c|
 		blockArray.concat(c.br_side)
 	}
-	
+
+=begin
 	blockArray.each { |b|
 		puts "#{b.offsetTop} : #{b.tag} + #{b.children}"
 	}
-	
-	root = create_block(blockArray)
+=end
+	if(@separatorList.size==0)
+		@parent.children = blockArray
+		blockArray.each { |c|
+		c.parent = @parent }
+	else
+		create_block(blockArray)
 	end
-	
-	return root
+	end
   end
 
   def create_block(children)

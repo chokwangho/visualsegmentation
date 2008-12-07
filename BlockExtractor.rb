@@ -105,7 +105,7 @@ class BlockExtractor
   end
   
   # what is level?
-  def divideDOMTree(node, parent, level)
+  def divideDOMTree(node, parent, level, doc)
 	block = create_block(node, parent, level)
 	result = isDividable(block, level)
 	
@@ -113,7 +113,7 @@ class BlockExtractor
 	  #puts "Block divided"
       if node.respond_to? :each_child 
         node.each_child do |child|
-          divideDOMTree(child, block, level)
+          divideDOMTree(child, block, level, doc)
         end
       end
       	      
@@ -128,7 +128,9 @@ class BlockExtractor
         end
       end
     end
-  
+	
+	html_file = File.new("interim.html", "w")
+	html_file.puts doc.to_html
   end  
   
   def isDividable(block, level)
@@ -137,40 +139,39 @@ class BlockExtractor
     inlineNodeFlag = @nodeChecker.isInlineNode(block.node)
     case tag   
     when "div"  # 1, 2, 4, 6, 8, 11
-  		heuristicArray[1] = 1
-  		heuristicArray[2] = 1
-  		#heuristicArray[3] = 0
+	  heuristicArray[1] = 1
+	  heuristicArray[2] = 1
+	  heuristicArray[3] = 0
       heuristicArray[4] = 1
       heuristicArray[6] = 1
-		  #heuristicArray[7] = 0            
+	  heuristicArray[7] = 0            
       heuristicArray[8] = 1
-      #heuristicArray[9] = 0   
+      heuristicArray[9] = 0   
       heuristicArray[11] = 1     
 =begin
     when "table"  # 1, 2, 3, 7, 9, 12
       heuristicArray[1] = 1
       heuristicArray[2] = 1
       heuristicArray[3] = 1
-      heuristicArray[8] = 1
-      heuristicArray[10] = 1
-      heuristicArray[13] = 1
+      heuristicArray[7] = 1
+      heuristicArray[9] = 1
+      heuristicArray[12] = 1
     when "td"     # 1, 2, 3, 4, 8, 9, 10, 12
       heuristicArray[1] = 1
       heuristicArray[2] = 1
       heuristicArray[3] = 1
       heuristicArray[4] = 1
-      heuristicArray[9] = 1
+      heuristicArray[8] = 1
+      heuristicArray[9] = 1   
       heuristicArray[10] = 1   
-      heuristicArray[11] = 1   
-      heuristicArray[13] = 1   
+      heuristicArray[12] = 1   
     when "tr"     # 1, 2, 3, 7, 9, 12
       heuristicArray[1] = 1
       heuristicArray[2] = 1
       heuristicArray[3] = 1
       heuristicArray[7] = 1
-      heuristicArray[8] = 1    
-      heuristicArray[10] = 1 
-	  heuristicArray[13] = 1
+      heuristicArray[9] = 1 
+	  heuristicArray[12] = 1
     when "p"      # 1, 2, 3, 4, 5, 6, 8, 9, 11
       heuristicArray[1] = 1
       heuristicArray[2] = 1
@@ -178,10 +179,9 @@ class BlockExtractor
       heuristicArray[4] = 1
       heuristicArray[5] = 1
       heuristicArray[6] = 1
-      heuristicArray[7] = 1	        
-      heuristicArray[9] = 1
-      heuristicArray[10] = 1   
-      heuristicArray[12] = 1
+      heuristicArray[8] = 1
+      heuristicArray[9] = 1   
+      heuristicArray[11] = 1
 =end
 	when "script"
 =begin	

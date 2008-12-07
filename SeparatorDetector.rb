@@ -92,7 +92,7 @@ class SeparatorDetector
     s_sy = separator.start_y
     s_ey = separator.end_y
     
-	puts "#{s_sy} : #{b_sy} : #{s_ey} : #{b_ey} "
+	#puts "#{s_sy} : #{b_sy} : #{s_ey} : #{b_ey} "
 
     if s_sy <= b_sy && s_ey >= b_ey
       result = CONTAINING1
@@ -115,7 +115,7 @@ class SeparatorDetector
     s_sx = separator.start_x
     s_ex = separator.end_x
     
-#	puts "#{s_sx} : #{b_sx} : #{s_ex} : #{b_ex} "
+	#puts "#{s_sx} : #{b_sx} : #{s_ex} : #{b_ex} "
 	
     if s_sx <= b_sx && s_ex >= b_ex
       result = CONTAINING2     
@@ -179,10 +179,11 @@ class SeparatorDetector
   def evaluateRelation
     #horizontal 
     @blockPool.each { |block|
-      puts block.to_s
+      #puts block.to_s
       next if block.width.to_i == 0 || block.height.to_i == 0
 	  size_h = @horizontalSeparatorList.size
-	  for i in 0...size_h
+	  i = 0
+	  while (i < size_h)
 	    separator = @horizontalSeparatorList[i]
         status = getHorizontalStatus(separator, block)
         if status == CONTAINING1 || status == CONTAINING2
@@ -191,19 +192,22 @@ class SeparatorDetector
           crossingUpdate(separator, block, status)
         elsif status == COVERING
           removeHorizontalSeparator separator
+		  i -= 1
+		  size_h -= 1
         end
-         puts status
+		i+=1
+		#puts status
       end      
     }
     
 	#vertical
     @blockPool.each { |block|
-      puts block.to_s
+      #puts block.to_s
       next if block.width.to_i == 0 || block.height.to_i == 0
 	  size_v = @verticalSeparatorList.size
-	  for i in 0...size_v
+	  i = 0
+	  while (i < size_v)
 		separator = @verticalSeparatorList[i]
-        #to_s
         status = getVerticalStatus(separator, block)
         if status == CONTAINING1 || status == CONTAINING2
           split(separator, block, status)
@@ -211,8 +215,11 @@ class SeparatorDetector
           crossingUpdate(separator, block, status)
         elsif status == COVERING
           removeVerticalSeparator separator
+		  i -= 1
+		  size_v -=1
         end
-         puts status
+		i+=1
+		#puts status
       end      
     }    
     
@@ -252,7 +259,7 @@ class SeparatorDetector
   end
   
   # FIND A BETTER WAY TO DRAW SEPARATORS
-  def drawSeparators(doc, body)
+  def drawSeparators(body)
     html = ""
     @separatorList.each_with_index { |element, index|
       width = element.end_x - element.start_x
@@ -263,7 +270,6 @@ class SeparatorDetector
       html = html + "px;height:" + "10"
       html = html + "px;background-color:gray;border:0px;z-index:400000;position:absolute;float:center;!important'></div>"
     }
-    #puts html
     body.append(html)   
   end
   
@@ -279,7 +285,7 @@ class SeparatorDetector
 		if (cmpr > 0) && (cmpr <= SIZE_THRESHOLD_1)
 			separator.weight +=0.5
 		elsif (cmpr > SIZE_THRESHOLD_1) && (cmpr <= SIZE_THRESHOLD_2)
-			separator.wieght +=1
+			separator.weight +=1
 		elsif (cmpr > SIZE_THRESHOLD_2)
 			separator.weight +=2
 		end
@@ -300,7 +306,7 @@ class SeparatorDetector
 			separator.weight += 1
 		end
 		
-		puts "#{separator.weight}"
+		#puts "#{separator.weight}"
 	}
   end
   

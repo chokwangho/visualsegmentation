@@ -78,7 +78,6 @@ class Separator
 	end
   end
   
-  #TODO: WRITE COMPARE OPERATOR FOR SEPARATORS
   def <=> (y)
 	if(orientation==0)
 		if(start_y < y.start_y)
