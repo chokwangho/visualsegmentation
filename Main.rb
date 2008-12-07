@@ -39,7 +39,7 @@ def vips_algorithm (block, body, doc)
 end
 
 if __FILE__ == $0
-  location = "mint.html"
+  location = "retrieved-5.html"
   doc = Hpricot(open(location))
   body = doc.search("/body")
 
@@ -53,10 +53,10 @@ if __FILE__ == $0
   vips_algorithm(root_block, body, doc)
 
   btree = BlockTree.new(root_block)
-  
+  #puts root_block
   html=""
-  html = html + "<div style='left:" + root_block.children[2].offsetLeft.to_s + "px; top:" + root_block.children[2].offsetTop.to_s + "px;width:" + root_block.children[2].width.to_s
-    html = html + "px;height:" + root_block.children[2].height.to_s
+  html = html + "<div style='left:" + root_block.offsetLeft.to_s + "px; top:" + root_block.offsetTop.to_s + "px;width:" + root_block.width.to_s
+    html = html + "px;height:" + root_block.height.to_s
     html = html + "px;background-color:transparent;border-width:thick;border-style:dashed;z-index:400000;position:absolute;float:center;'></div>"
   body.append(html)
 

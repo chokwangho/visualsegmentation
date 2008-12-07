@@ -46,6 +46,8 @@ function retrieve(event)
 		$(nodes[i]).attr( { 
 			myOffsetLeft:nodes[i].offsetLeft, 
 			myOffsetTop:nodes[i].offsetTop, 
+			//myOffsetLeft:$(nodes[i]).offset().left, 
+			//myOffsetTop:$(nodes[i]).offset().top, 			
 			myWidth:$(nodes[i]).width(), 
 			myHeight:$(nodes[i]).height(), 
 			myBackgroundColor:embedded_doc.defaultView.getComputedStyle(nodes[i],null).getPropertyValue("background-color"),
@@ -55,6 +57,7 @@ function retrieve(event)
 			myFontWeight:fontWeight 
 		} );	
 	}
+	//alert($(embedded_doc.getElementById("header")).offset().left + " " + embedded_doc.getElementById("header").offsetLeft);
 	alert("Style retrieved successfully.");
 }
 

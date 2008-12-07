@@ -20,27 +20,13 @@
       <label value="Enter a URL:"/>
       <textbox id="url" flex="1" value="file:///E:/Documents%20and%20Settings/My%20Documents/Aptana%20Studio/VisualParser/cs147.html"/>
       <button label="Go!" oncommand="loadPage()"/>
+  	  <button label="Retrieve Style!" oncommand="retrieve();" />  
+	  <button label="Save as a file" oncommand="save();" />  
     </hbox>
 
     <hbox flex="1">
       <browser id="contentview" type="content-primary" src="file:///E:/Documents%20and%20Settings/My%20Documents/Aptana%20Studio/VisualParser/cs147.html" flex="1"/>    
 
-      <vbox>   
-        <groupbox>
-          <caption label="Stats"/>
-          <grid flex="1">
-            <columns>
-              <column flex="1"/>
-              <column flex="1"/>
-            </columns>
-            <rows>
-				<button label="Retrieve Style!" oncommand="retrieve();" />  
-				<button label="Save as a file" oncommand="save();" />  
-            </rows>
-          </grid>
-        </groupbox>
-        <spacer flex="1"/>
-      </vbox>
     </hbox>
   </vbox>
 
