@@ -78,7 +78,7 @@ class StructureConstructor
 
   def create_block(children)
 		
-	block = Block.new(nil, nil)
+	block = Block.new(nil, "CREATED")
     
 	min_x, max_x = children[0].offsetLeft, children[0].offsetLeft + children[0].width
 	min_y, max_y = children[0].offsetTop, children[0].offsetTop + children[0].height

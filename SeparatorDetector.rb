@@ -14,25 +14,62 @@ class SeparatorDetector
   SIZE_THRESHOLD_1 = 5
   SIZE_THRESHOLD_2 = 20
   
-  attr_accessor :blockPool, :separatorList, :bodyX, :bodyY
+  attr_accessor :blockPool, :p_block, :separatorList, :bodyX, :bodyY
   
-  def initialize(blockPool, bodyX, bodyY)
+  def initialize(blockPool, block)
     @blockPool = blockPool
     @separatorList = Array.new
     @verticalSeparatorList = Array.new
     @horizontalSeparatorList = Array.new
 	
-    # The list starts with only one separator (Pbe, Pee) 
-    # whose start pixel and end pixel are corresponding 
-    # to the borders of the pool.
-	bodyY=5000
-    @bodyX, @bodyY = bodyX, bodyY
-    separator1 = Separator.new(0, 0, 0, bodyX, bodyY)
+	if(block.tag == "body")
+		fix_body(blockPool.blockPool, block)
+	end
+=begin
+	puts block.height
+    puts block.width
+	puts block.offsetTop
+    puts block.offsetLeft
+=end
+	@bodyX, @bodyY = block.offsetLeft+block.width, block.offsetTop+block.height
+    separator1 = Separator.new(0, block.offsetLeft, block.offsetTop,  block.offsetLeft+block.width, block.offsetTop+block.height)
     addHorizontalSeparator separator1
-	separator2 = Separator.new(1, 0, 0, bodyX, bodyY)
+	separator2 = Separator.new(1, block.offsetLeft, block.offsetTop,  block.offsetLeft+block.width, block.offsetTop+block.height)
     addVerticalSeparator separator2
+	
+	@p_block = block
   end
   
+  def fix_body(blockPool, block) 
+	min_x, max_x = blockPool[0].offsetLeft, blockPool[0].offsetLeft + blockPool[0].width
+	min_y, max_y = blockPool[0].offsetTop, blockPool[0].offsetTop + blockPool[0].height
+	minx_i, maxx_i = 0, 0
+	miny_i, maxy_i = 0, 0
+
+	blockPool.each_with_index{ |child, index|
+		if (child.offsetLeft < min_x) 
+			min_x=child.offsetLeft
+			minx_i=index 
+		end
+		if ((child.offsetLeft + child.width) > max_x) 
+			max_x=(child.offsetLeft + child.width)
+			maxx_i=index 
+		end
+		if (child.offsetTop < min_y) 
+			min_y=child.offsetTop 
+			miny_i=index
+		end
+		if ((child.offsetTop + child.height) > max_y) 
+			max_y=(child.offsetTop + child.height) 
+			maxy_i=index
+		end}
+  
+	block.offsetLeft = min_x
+    block.offsetTop = min_y
+    block.width = max_x - min_x
+    block.height = max_y - min_y
+  end
+
   def to_s
     result = ""
     @separatorList.each do |separator|
@@ -234,7 +271,7 @@ class SeparatorDetector
 # Remove the four separators that stand at the border of the pool.  
   def removeBorders
     @separatorList.each_with_index { |element, index|
-      if element.start_x == 0 && element.start_y == 0
+      if element.start_x == @p_block.offsetLeft && element.start_y == @p_block.offsetTop
         # remove separators from the blocks
 		element.br_side.each { |br_block|
 			if(element.orientation==0)
@@ -264,11 +301,15 @@ class SeparatorDetector
     @separatorList.each_with_index { |element, index|
       width = element.end_x - element.start_x
       height = element.end_y - element.start_y
-      #html = html + "<div offsetLeft='" + element.start_x.to_s + "' offsetTop='" + element.start_y.to_s + "'"
-      #html = html + " width='" + width.to_s + "' height='" + height.to_s + "'"
-      html = html + "<div style='left:" + element.start_x.to_s + "px; top:" + element.end_y.to_s + "px;width:" + width.to_s
-      html = html + "px;height:" + "10"
-      html = html + "px;background-color:gray;border:0px;z-index:400000;position:absolute;float:center;!important'></div>"
+	  if (element.orientation == 0)
+		html = html + "<div style='left:" + element.start_x.to_s + "px; top:" + element.start_y.to_s + "px;width:" + width.to_s
+		html = html + "px;height:" + "10"
+		html = html + "px;background-color:gray;border:0px;z-index:400000;position:absolute;float:center;!important'></div>"
+	  else
+		html = html + "<div style='left:" + element.start_x.to_s + "px; top:" + element.start_y.to_s + "px;width:" + "10"
+		html = html + "px;height:" + height.to_s
+		html = html + "px;background-color:gray;border:0px;z-index:400000;position:absolute;float:center;!important'></div>"
+	  end
     }
     body.append(html)   
   end

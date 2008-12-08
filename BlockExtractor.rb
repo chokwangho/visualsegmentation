@@ -12,12 +12,13 @@ class BlockExtractor
 	NOT_DIVIDE = 1
 	FINISHED = 2
 
-  attr_accessor :blockPool, :count
+  attr_accessor :blockPool, :count, :p_block
   
-  def initialize()
+  def initialize(p_block)
     @nodeChecker = NodeChecker.new
     @blockPool = BlockPool.new
 	@count=0
+	@p_block=p_block
   end
   
   def getPropertyValue(node, property)
@@ -59,13 +60,17 @@ class BlockExtractor
 	if (block.offsetTop.nil?) && !(parent.nil?)
 		block.offsetTop = parent.offsetTop
 	elsif !(parent.nil?)
-		block.offsetTop += parent.offsetTop
+#		if (!@nodeChecker.isInlineNode(block.node)&&block.tag!="h2"&&block.tag!="p")
+			block.offsetTop += parent.offsetTop
+#		end
 	end
 	
 	if (block.width.nil?) && !(parent.nil?)
 		block.offsetLeft = parent.offsetLeft
 	elsif !(parent.nil?)
-		block.offsetLeft += parent.offsetLeft
+#		if (!@nodeChecker.isInlineNode(block.node)&&block.tag!="h2"&&block.tag!="p")
+			block.offsetLeft += parent.offsetLeft
+#		end
 	end
 	
 	if (block.width.nil?) && !(parent.nil?)
@@ -105,7 +110,7 @@ class BlockExtractor
   end
   
   # what is level?
-  def divideDOMTree(node, parent, level, doc)
+  def divideDOMTree(node, parent, level)
 	block = create_block(node, parent, level)
 	result = isDividable(block, level)
 	
@@ -113,7 +118,7 @@ class BlockExtractor
 	  #puts "Block divided"
       if node.respond_to? :each_child 
         node.each_child do |child|
-          divideDOMTree(child, block, level, doc)
+          divideDOMTree(child, block, level)
         end
       end
       	      
@@ -122,15 +127,12 @@ class BlockExtractor
 		#puts "Block added: #{block.tag}"
 		@blockPool.addBlock(block)
 		if block.node.respond_to? :set_attribute
-            block.node.set_attribute(:style, "border-width: thick; border-style: dashed; border-color: red;")
+            #block.node.set_attribute(:style, "border-width: thick; border-style: dashed; border-color: red;")
 			# why did you add this id?
 			#block.node.set_attribute(:id, "BlockParserBlock")
         end
       end
     end
-	
-	html_file = File.new("interim.html", "w")
-	html_file.puts doc.to_html
   end  
   
   def isDividable(block, level)
@@ -216,7 +218,7 @@ class BlockExtractor
   end
 
 =begin
-Rule 1
+Rule 1	-- DONE
 If the DOM node is not a text node and it has no (valid) children, then this node cannot be divided and will be cut.
 Why does it matter if it is a text node or not?
 =end
@@ -235,7 +237,7 @@ Why does it matter if it is a text node or not?
   end
 
 =begin
-Rule 2 
+Rule 2	-- DONE
 If the DOM node has only one (valid) child and the child is not a text node, then divide this node.
 =end
   def rule2(block)
@@ -262,7 +264,7 @@ If the DOM node has only one (valid) child and the child is not a text node, the
 
 
 =begin
-Rule 3
+Rule 3	-- WRITE THIS
 If the DOM node is the root node of the sub-DOM tree, and there is only one sub DOM tree corresponding to this block, divide this node.
 =end  
   def rule3(block)
@@ -272,7 +274,7 @@ If the DOM node is the root node of the sub-DOM tree, and there is only one sub 
 
 
 =begin
-Rule 4
+Rule 4	-- DONE
 If all of the child nodes of the DOM node are text nodes or virtual text nodes, do not divide the node.
 
 DoC
@@ -315,7 +317,11 @@ DoC
 		if condition2Flag  
           block.doc = 10
         else
-          block.doc = 9
+		  if (@p_block.doc <= 9)
+			block.doc = 9
+		  else
+			block.doc = 10
+		  end
         end
 		return NOT_DIVIDE
 	end
@@ -324,7 +330,7 @@ DoC
   end
 
 =begin
-Rule 5 
+Rule 5 -- DONE
 If one of the child nodes of the DOM node is line-break node, then divide this DOM node.
 =end  
   def rule5(block)
@@ -338,7 +344,7 @@ If one of the child nodes of the DOM node is line-break node, then divide this D
   end
  
 =begin
-Rule 6 
+Rule 6 -- FIX THIS
 If one of the child nodes of the DOM node has HTML tag <HR>, then divide this DOM node.  
 =end
   def rule6(block)
@@ -350,9 +356,9 @@ If one of the child nodes of the DOM node has HTML tag <HR>, then divide this DO
       end
     end      
   end
-  
+
 =begin
-Rule 7
+Rule 7	- DONE
 If the background color of this node is different from one of its children's divide this node and at the same time
 the child node with different background color will not be divided this round!
 =end
@@ -381,8 +387,10 @@ the child node with different background color will not be divided this round!
 						child_block.node.set_attribute(:style, "border-width: thick; border-style: dashed; border-color: red;")
 					end
 					# TODO: DOC (6-8) (size, html tag)
-					if ((block.rel_width < SIZE_THRESHOLD) || (block.rel_height <= SIZE_THRESHOLD))
-						block.doc = 7
+					if ((child_block.rel_width < SIZE_THRESHOLD) || (child_block.rel_height <= SIZE_THRESHOLD))
+							child_block.doc = @p_block.doc + 1
+						else
+							child_block.doc = @p_block.doc
 					end
 				end
 			end
@@ -414,7 +422,7 @@ then the node cannot be divided.
 	
 	if ((block.rel_width < SIZE_THRESHOLD) || (block.rel_height <= SIZE_THRESHOLD))
       # TODO: DOC (5-8) (html tag)
-	  block.doc = 7
+	  block.doc = @p_block.doc + 1
       return NOT_DIVIDE
     end
 	
@@ -422,7 +430,7 @@ then the node cannot be divided.
   end
 
 =begin
-Rule 9
+Rule 9 -- DONE
 If the child of the node with maximum size are smaller than a threshold, do not divide this node.
 =end
   def rule9(block)
@@ -438,7 +446,12 @@ If the child of the node with maximum size are smaller than a threshold, do not 
 
 	if ((max_width < SIZE_THRESHOLD) || (max_height <= SIZE_THRESHOLD))
       # TODO: DOC (size, html tag)
-	  block.doc = 8
+	  if ((block.rel_width < SIZE_THRESHOLD) || (block.rel_height <= SIZE_THRESHOLD))
+			block.doc = @p_block.doc + 1
+	  else
+			block.doc = @p_block.doc
+	  end
+	  	
       return NOT_DIVIDE
     end
 
@@ -466,6 +479,12 @@ Rule 12
 Do not divide this node.
 =end
   def rule12(block)
+	if ((block.rel_width < SIZE_THRESHOLD) || (block.rel_height <= SIZE_THRESHOLD))
+		block.doc = @p_block.doc + 1
+	else
+		block.doc = @p_block.doc
+	end
+	  
 	return NOT_DIVIDE
 	#TODO: DOC based on "the html tag and size of the node"
   end

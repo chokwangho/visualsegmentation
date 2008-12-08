@@ -1,5 +1,6 @@
 class BlockPool
-
+  attr_accessor :blockPool
+  
   def initialize
     @blockPool = Array.new
   end
