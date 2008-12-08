@@ -61,7 +61,7 @@ class BlockExtractor
 		block.offsetTop = parent.offsetTop
 	elsif !(parent.nil?)
 #		if (!@nodeChecker.isInlineNode(block.node)&&block.tag!="h2"&&block.tag!="p")
-			block.offsetTop += parent.offsetTop
+#			block.offsetTop += parent.offsetTop
 #		end
 	end
 	
@@ -69,7 +69,7 @@ class BlockExtractor
 		block.offsetLeft = parent.offsetLeft
 	elsif !(parent.nil?)
 #		if (!@nodeChecker.isInlineNode(block.node)&&block.tag!="h2"&&block.tag!="p")
-			block.offsetLeft += parent.offsetLeft
+#			block.offsetLeft += parent.offsetLeft
 #		end
 	end
 	
