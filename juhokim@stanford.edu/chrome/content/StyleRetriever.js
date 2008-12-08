@@ -44,10 +44,10 @@ function retrieve(event)
 	{
 		fontWeight = getFontWeight(embedded_doc.defaultView.getComputedStyle(nodes[i],null).getPropertyValue("font-weight"));
 		$(nodes[i]).attr( { 
-			myOffsetLeft:nodes[i].offsetLeft, 
-			myOffsetTop:nodes[i].offsetTop, 
-			//myOffsetLeft:$(nodes[i]).offset().left, 
-			//myOffsetTop:$(nodes[i]).offset().top, 			
+			//myOffsetLeft:nodes[i].offsetLeft, 
+			//myOffsetTop:nodes[i].offsetTop, 
+			myOffsetLeft:$(nodes[i]).offset().left, 
+			myOffsetTop:$(nodes[i]).offset().top, 			
 			myWidth:$(nodes[i]).width(), 
 			myHeight:$(nodes[i]).height(), 
 			myBackgroundColor:embedded_doc.defaultView.getComputedStyle(nodes[i],null).getPropertyValue("background-color"),

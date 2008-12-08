@@ -59,7 +59,7 @@ def draw_blocks(root_block, body)
 end
 
 if __FILE__ == $0
-  location = "retrieved.html"
+  location = "retrieved-6.html"
   doc = Hpricot(open(location))
   body = doc.search("/body")
 
