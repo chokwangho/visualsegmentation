@@ -53,6 +53,7 @@ if __FILE__ == $0
   vips_algorithm(root_block, body, doc)
 
   btree = BlockTree.new(root_block)
+  btree.write_2_xml("tree.xml")
   #puts root_block
   html=""
   html = html + "<div style='left:" + root_block.offsetLeft.to_s + "px; top:" + root_block.offsetTop.to_s + "px;width:" + root_block.width.to_s
