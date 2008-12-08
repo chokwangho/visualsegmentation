@@ -59,7 +59,7 @@ def draw_blocks(root_block, body)
 end
 
 if __FILE__ == $0
-  location = "retrieved2.html"
+  location = "mint-retrieved.html"
   doc = Hpricot(open(location))
   body = doc.search("/body")
 
@@ -74,6 +74,7 @@ if __FILE__ == $0
   vips_algorithm(root_block, body)
 
   btree = BlockTree.new(root_block)
+  btree.write_2_xml("tree.xml")
   draw_blocks(root_block, body)
   
   visualizeSections(doc, location)

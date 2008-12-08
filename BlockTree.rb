@@ -35,10 +35,6 @@ class BlockTree
   end
   
 	def write_2_xml(file)
-    puts "TREE"
-    puts @root
-    puts @root.children    
-    puts @root.children[0]
     
     writeXML(root)
     xml_file = File.new(file, "w")
