@@ -23,9 +23,10 @@ class BlockTree
 		return node.to_s
 	end
   
-	def getURL(node)
-		return node.to_s
-	end  
+  def getURL(node)
+    filename = "../html/snippet_" + node.id.to_s + ".html"
+    return filename
+  end  
 	
 	# TREE-EDIT DISTANCE FUNCTIONS BEGIN		
 	def Compute_Edit_Distance(other_tree)
@@ -232,17 +233,18 @@ class BlockTree
 	end
 	
 	# TREE-EDIT DISTANCE FUNCTIONS END
-	
-	def writeXML(node)
-		if node.nil?
-			puts "NIL"
-			return
-		end
-		@xmlString = @xmlString + "<node><label><![CDATA["
-		@xmlString = @xmlString + getLabel(node)
-		@xmlString = @xmlString + "]]></label><url><![CDATA["
-		@xmlString = @xmlString + getURL(node)
-		@xmlString = @xmlString + "]]></url><children>"
+
+  
+  def writeXML(node)
+    if node.nil?
+      puts "NIL"
+      return
+    end
+    @xmlString = @xmlString + "<node><label><![CDATA["
+    @xmlString = @xmlString + getLabel(node)
+    @xmlString = @xmlString + "]]></label><url><![CDATA["
+    @xmlString = @xmlString + getURL(node)
+    @xmlString = @xmlString + "]]></url><children>"
     
 		if node.children.respond_to? :each_with_index
 			node.children.each_with_index{ |child, index|

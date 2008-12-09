@@ -3,6 +3,9 @@
 <title>Treeview Example 1 - Information Management</title>
 <script type="text/javascript" src="lib/processing.js"></script>
 <script type="text/javascript" src="lib/treeview.js"></script>
+<style type="text/css" media="screen">@import "websnapr/websnapr.css";</style>
+<script type="text/javascript" src="websnapr/websnapr.js"></script>
+
 <style type="text/css">
 body {
 	font-family: Tahoma;
@@ -11,20 +14,29 @@ canvas {
 	text-align: center;
 }
 #editor{
-	position: absolute;
-	top:100px;
-	right:10px;	
+	position:relative;	
 }
 #interactions{
-	font-size: smaller;
+	position: relative;
+	top:-240px;
+	left:300px;	
 }
 </style>
 
 </head>
 
-<body onload="displayTree('tree.xml', 750, 500)">
+<body onload="displayTree('tree.xml', 900, 500)">
 	<h2>Visual Segmentation</h2>	
 	<canvas id="canvas"></canvas>
+	<div id="display">
+		<table><tr>
+		<td width="300">
+			Label:<span id="show_label">None</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>URL:<a id="show_url"  class="Snap_Shot_Preview"  target="_blank">None</span></td>
+		</tr></table>		
+		<input type="button" value="Expand all" onClick="expandAll()"/>
+		<input type="button" value="Collapse all" onClick="collapseAll()"/><br/>
+	</div>
 	<div id="editor">
 		<h3>Node Editor</h3>
 		<form name="edit_form" action="" method="POST">
@@ -38,8 +50,9 @@ canvas {
 			<input type="button" value="Update node" onClick="updateNode(this.form)"/><br/>
 			<br/>
 		</form>
-		<h3>Interactions</h3>
-		<div id="interactions">
+	</div>	
+	<div id="interactions">
+	<h3>Interactions</h3>		
 		* L-click the node: expand & collapse <br/>
 		* L-click the empty space: dance!<br/>	
 		* L-click & drag the empty space: panning<br/>
@@ -47,16 +60,8 @@ canvas {
 		* R-click the empty space: zoom to fit <br/>
 		* R-click & drag the empty space: zoom<br/>
 		* Drag node: move the node<br/>
-		</div>
 	</div>
-	<div id="display">
-		<table><tr>
-		<td width="300">
-			Label:<span id="show_label">None</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-		<td>URL:<a id="show_url" target="_blank">None</span></td>
-		</tr></table>		
-		<input type="button" value="Expand all" onClick="expandAll()"/>
-		<input type="button" value="Collapse all" onClick="collapseAll()"/><br/>
-	</div>
+	<a href="http://www.mcpanic.com">Here</a>
+ <script type="text/javascript" src="http://shots.snap.com/ss/d64f38c13cd44da3b0cd77d659204ed6/snap_shots.js"></script>	
 </body>
 </html>

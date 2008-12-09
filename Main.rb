@@ -40,27 +40,54 @@ def vips_algorithm (block, body)
 	end
 end
 
+
 def draw_blocks(root_block, body)
-	if !((root_block.children).nil?)
-		for i in 0...root_block.children.size
-			draw_blocks(root_block.children[i], body)
-		end
-	end
-	
-	html=""
-	html = html + "<div style='left:" + root_block.offsetLeft.to_s + "px; top:" + root_block.offsetTop.to_s + "px;width:" + root_block.width.to_s
+  if !((root_block.children).nil?)
+    for i in 0...root_block.children.size
+      draw_blocks(root_block.children[i], body)
+    end
+  end
+  
+  html=""
+  html = html + "<div id='" + root_block.id.to_s + "' "
+  html = html + "style='left:" + root_block.offsetLeft.to_s + "px; top:" + root_block.offsetTop.to_s + "px;width:" + root_block.width.to_s
     html = html + "px;height:" + root_block.height.to_s
     html = html + "px;background-color:transparent;border-width:thick;border-style:dashed;z-index:400000;position:absolute;float:center;'></div>"
-	body.append(html)
+  body.append(html)
 =begin
-	if (root_block.offsetTop > 1509)
-		puts root_block.tag
-	end
+  if (root_block.offsetTop > 1509)
+    puts root_block.tag
+  end
 =end
 end
 
+def draw_sub_blocks(root_block, body, doc)
+  if !((root_block.children).nil?)
+    for i in 0...root_block.children.size
+      draw_sub_blocks(root_block.children[i], body, doc)
+    end
+  end
+  
+  newDoc = doc.dup
+  newBody = newDoc.search("/body")
+  
+  html=""
+  html = html + "<div id='sub_blocks' style='left:" + root_block.offsetLeft.to_s + "px; top:" + root_block.offsetTop.to_s + "px;width:" + root_block.width.to_s
+    html = html + "px;height:" + root_block.height.to_s
+    html = html + "px;background-color:transparent;border-width:thick;border-style:dashed;z-index:400000;position:absolute;float:center;'></div>"
+
+  newBody.append(html) 
+    filename = "html/snippet_" + root_block.id.to_s + ".html"  
+    html_file = File.new(filename, "w")
+    html_file.puts newDoc.to_html 
+    
+  #remove all sub blocks
+  sub_blocks = newDoc.search("#sub_blocks").remove
+
+end
+
 if __FILE__ == $0
-  location = "retrieved2.html"
+  location = "mint-retrieved.html"
   doc = Hpricot(open(location))
   body = doc.search("/body")
 
@@ -76,10 +103,14 @@ if __FILE__ == $0
 
   btree = BlockTree.new(root_block)
   btree.write_2_xml("tree.xml")
-  draw_blocks(root_block, body)
   
+  #First, create snippet files
+  draw_sub_blocks(root_block, body, doc)
+  
+  draw_blocks(root_block, body)  
+ 
   visualizeSections(doc, location)
-  
+ 
   t1 = Tree.new
   t1.Generate_Tree_1
   
