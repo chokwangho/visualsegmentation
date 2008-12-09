@@ -67,7 +67,7 @@ class StructureConstructor
 =end
 
 	if(@separatorList.size==0)
-		@parent.children = blockArray
+		@parent.children.concat(blockArray)
 		blockArray.each { |k|
 		k.parent = @parent }
 	else
@@ -104,7 +104,7 @@ class StructureConstructor
 			maxy_i=index
 		end
 	}
-	block.children = children
+	block.children.concat(children)
 
 	block.offsetLeft = min_x
     block.offsetTop = min_y

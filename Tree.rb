@@ -22,7 +22,7 @@ class Tree
 	def initialize
 		@root = nil
 		@tree_dist = nil
-		
+		@dist_mats = nil
 		@post_order_list = Array.new
 	    @leftmost_leaf = Array.new
 		@key_roots = Array.new

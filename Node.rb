@@ -5,7 +5,7 @@ class Node
 		@label = label
 		@parent = parent
 		@children = Array.new
-		@po_num=-1
+		@po_num=nil
 		@mapping = nil
 	end
 
