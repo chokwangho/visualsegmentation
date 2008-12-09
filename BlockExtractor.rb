@@ -59,18 +59,10 @@ class BlockExtractor
 	#There will be no nil width/height/background color; if nil, assigned parent's width & height as upper bound
 	if (block.offsetTop.nil?) && !(parent.nil?)
 		block.offsetTop = parent.offsetTop
-	elsif !(parent.nil?)
-#		if (!@nodeChecker.isInlineNode(block.node)&&block.tag!="h2"&&block.tag!="p")
-#			block.offsetTop += parent.offsetTop
-#		end
 	end
 	
 	if (block.width.nil?) && !(parent.nil?)
 		block.offsetLeft = parent.offsetLeft
-	elsif !(parent.nil?)
-#		if (!@nodeChecker.isInlineNode(block.node)&&block.tag!="h2"&&block.tag!="p")
-#			block.offsetLeft += parent.offsetLeft
-#		end
 	end
 	
 	if (block.width.nil?) && !(parent.nil?)

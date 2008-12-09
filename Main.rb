@@ -5,8 +5,9 @@ require 'BlockExtractor'
 require 'SeparatorDetector'
 require 'StructureConstructor'
 require 'BlockTree'
+require 'Tree'
 
-PDOC = 6
+PDOC = 5
 
 def visualizeSections(html_doc, location)
   html_file = File.new("new.html", "w")
@@ -59,7 +60,7 @@ def draw_blocks(root_block, body)
 end
 
 if __FILE__ == $0
-  location = "mint-retrieved.html"
+  location = "retrieved2.html"
   doc = Hpricot(open(location))
   body = doc.search("/body")
 
@@ -78,4 +79,12 @@ if __FILE__ == $0
   draw_blocks(root_block, body)
   
   visualizeSections(doc, location)
+  
+  t1 = Tree.new
+  t1.Generate_Tree_1
+  
+  t2 = Tree.new
+  t2.Generate_Tree_2
+  
+  t1.Compute_Edit_Distance(t2)
 end
