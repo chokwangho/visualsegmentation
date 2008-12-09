@@ -102,7 +102,7 @@ if __FILE__ == $0
   vips_algorithm(root_block, body)
 
   btree = BlockTree.new(root_block)
-  btree.write_2_xml("tree.xml")
+  btree.write_2_xml("treeview/tree.xml")
   
   #First, create snippet files
   draw_sub_blocks(root_block, body, doc)
