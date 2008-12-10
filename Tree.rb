@@ -117,8 +117,8 @@ class Tree
 				if(@leftmost_leaf[t1_index]==@leftmost_leaf[i-1] && 
 					other_tree.leftmost_leaf[t2_index]==other_tree.leftmost_leaf[j-1])
 					forest_dist[i_1][j_1].cost=
-						Min(first=forest_dist[i_1-1][j_1].cost+1,
-							second=forest_dist[i_1][j_1-1].cost+1,
+						Max(first=forest_dist[i_1-1][j_1].cost-1,
+							second=forest_dist[i_1][j_1-1].cost-1,
 							third=(forest_dist[i_1-1][j_1-1].cost+Cost(t1_index,t2_index,other_tree)));
 					
 					#save back pts to determine mapping
@@ -142,8 +142,8 @@ class Tree
 					@tree_dist[t1_index][t2_index].back_ptrs.push(trip)
 				else
 					forest_dist[i_1][j_1].cost=
-					Min(first=forest_dist[i_1-1][j_1].cost+1,
-						second=forest_dist[i_1][j_1-1].cost+1,
+					Max(first=forest_dist[i_1-1][j_1].cost-1,
+						second=forest_dist[i_1][j_1-1].cost-1,
 						third=(forest_dist[@leftmost_leaf[t1_index].po_num-@leftmost_leaf[i-1].po_num][other_tree.leftmost_leaf[t2_index].po_num-leftmost_leaf[j-1].po_num].cost+@tree_dist[t1_index][t2_index].cost));
 						
 					#save back ptrs to determin mapping
@@ -181,23 +181,23 @@ class Tree
 	
 	def Cost(i,j,other_tree)
 		if (@post_order_list[i].label==other_tree.post_order_list[j].label)
-			return 0;
+			return 3;
 		else
-			return 1;
+			return 0;
 		end
 	end
 	
-	def Min(a, b, c)
-		min=nil
+	def Max(a, b, c)
+		max=nil
 		
-		if(a <= b) 
-			min=a
+		if(a >= b) 
+			max=a
 		else 
-			min=b
+			max=b
 		end
 		
-		if(min <= c) 
-			return min
+		if(max >= c) 
+			return max
 		else 
 			return c
 		end

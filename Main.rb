@@ -1,3 +1,4 @@
+
 require 'rubygems'
 require 'hpricot'
 require 'open-uri'
@@ -54,11 +55,6 @@ def draw_blocks(root_block, body)
     html = html + "px;height:" + root_block.height.to_s
     html = html + "px;background-color:transparent;border-width:thick;border-style:dashed;z-index:400000;position:absolute;float:center;'></div>"
   body.append(html)
-=begin
-  if (root_block.offsetTop > 1509)
-    puts root_block.tag
-  end
-=end
 end
 
 def draw_sub_blocks(root_block, body, doc)
@@ -102,7 +98,11 @@ if __FILE__ == $0
   vips_algorithm(root_block, body)
 
   btree = BlockTree.new(root_block)
-  btree.write_2_xml("treeview/tree.xml")
+  b2 = BlockTree.new(root_block)	
+  btree.Compute_Edit_Distance(b2)
+  
+  btree.write_2_xml("tree.xml")
+  draw_blocks(root_block, body)
   
   #First, create snippet files
   draw_sub_blocks(root_block, body, doc)
@@ -110,7 +110,8 @@ if __FILE__ == $0
   draw_blocks(root_block, body)  
  
   visualizeSections(doc, location)
- 
+
+=begin
   t1 = Tree.new
   t1.Generate_Tree_1
   
@@ -118,4 +119,6 @@ if __FILE__ == $0
   t2.Generate_Tree_2
   
   t1.Compute_Edit_Distance(t2)
+=end
+
 end
