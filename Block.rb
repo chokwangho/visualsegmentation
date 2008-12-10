@@ -1,6 +1,6 @@
 
 class Block
-  attr_accessor :doc, :node, :tag, :offsetLeft, :offsetTop, :width, :height, :rel_width, :rel_height, :bg_color, :fontsize, :fontweight, :parent, :children, :separators, :orientation, :label, :po_num, :mapping
+  attr_accessor :node, :doc, :tag, :offsetLeft, :offsetTop, :width, :height, :rel_width, :rel_height, :bg_color, :fontsize, :fontweight, :parent, :children, :separators, :orientation, :po_num, :mapping
   @@id = 0
   def initialize(node, tag)
     @doc = 0 # degree of coherence
@@ -13,7 +13,6 @@ class Block
 	@separators = Array.new # 0 - 4 {top, left, bottom, right}
 	@orientation = 1
 	
-	@label=tag	#for now
 	@po_num=nil
 	@mapping=nil
   end

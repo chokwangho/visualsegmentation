@@ -24,10 +24,10 @@ p.Generalized_Perceptron
 # write Compute_Feature_Vector
 
 class Perceptron 
-	FEATURE_SIZE = 3
+	FEATURE_SIZE = 8
 	T = 20
 	
-	attr_accessor :training_list, :w, 
+	attr_accessor :training_list, :w
 	# just push onto training_list
 	
 	def initialize
@@ -58,8 +58,54 @@ class Perceptron
 	end
 	
 	def Compute_Feature_Vector(alignment)
+		f = Array.new(FEATURE_SIZE, 0)
+		
+		f[0] = alignment.insert.size + alignment.delete.size
 	
-	
+		#tag, doc, rel_offsetLeft, rel_offsetTop, rel_width, rel_height
+		alignment.match.each {|i, j|
+			none = true
+			
+			if (@post_order_list[i].tag==other_tree.post_order_list[j].tag)
+				f[1] += 1
+				none = false
+			end
+		
+			if ((@post_order_list[i].doc-other_tree.post_order_list[j].doc).abs < 2)
+				f[2] += 1
+				none = false
+			end
+		
+			rel = (@post_order_list[i].offsetLeft < other_tree.post_order_list[j].offsetLeft) ? @post_order_list[i].offsetLeft/(other_tree.post_order_list[j].offsetLeft*1.0) : other_tree.post_order_list[j].offsetLeft/(@post_order_list[i].offsetLeft*1.0)
+			if (rel >= 0.9)
+				f[3] += 1
+				none = false
+			end
+		
+			rel = (@post_order_list[i].offsetTop < other_tree.post_order_list[j].offsetTop) ? @post_order_list[i].offsetTop/(other_tree.post_order_list[j].offsetTop*1.0) : other_tree.post_order_list[j].offsetTop/(@post_order_list[i].offsetTop*1.0)
+			if (rel >= 0.9)
+				f[4] += 1
+				none = false
+			end
+		
+			rel = (@post_order_list[i].width < other_tree.post_order_list[j].width) ? @post_order_list[i].width/(other_tree.post_order_list[j].width*1.0) : other_tree.post_order_list[j].width/(@post_order_list[i].width*1.0)
+			if (rel >= 0.9)
+				f[5] += 1
+				none = false
+			end
+
+			rel = (@post_order_list[i].height < other_tree.post_order_list[j].height) ? @post_order_list[i].height/(other_tree.post_order_list[j].height*1.0) : other_tree.post_order_list[j].height/(@post_order_list[i].height*1.0)	
+			if (rel >= 0.9)
+				f[6] += 1
+				none = false
+			end	
+		
+			if (none)
+				f[7] += 1
+			end
+		}
+		
+		return f
 	end
 	
 	def Predict_Alignment(t_1, t_2)
