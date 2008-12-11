@@ -12,7 +12,8 @@ require 'Perceptron'
 PDOC = 5
 
 def visualizeSections(html_doc, location)
-  html_file = File.new("new.html", "w")
+  new_location = location + "-vips.html"
+  html_file = File.new(new_location, "w")
   html_file.puts html_doc.to_html
 end
 
@@ -84,7 +85,8 @@ def draw_sub_blocks(root_block, body, doc)
 end
 
 if __FILE__ == $0
-  location = "mint-retrieved.html"
+  
+  location = "Hybrid.retrieved.html"
   doc = Hpricot(open(location))
   body = doc.search("/body")
 
