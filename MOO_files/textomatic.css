@@ -1,0 +1,130 @@
+/* textomatic.css */
+
+/* Design front */
+#hDesignFront {text-align:center;margin-top:5px;}
+#divTextHeader {position:relative; width: 99.9%; }
+div.buttons { margin-right: 0px; padding: 0;}
+div#btnStage3 input.button { position: relative; right:-3px; top:-10px;}
+input#btnStage1 {margin-top: 10px;}
+
+#divCardBuilder {background:url(../images/darkhashed.png); border:solid 1px #c7c7c7; position:relative;text-align:left;
+	padding-bottom:10px; height:200px;}
+#divCardWrapper {background:url(../images/designfrontblank.png) no-repeat; width:310px; height:130px; 
+	position:relative; top: 7px;margin:5px auto 5px auto; text-align:center; }
+#divCardScroller {overflow:hidden; position:absolute;width:301px; height:119px; top:5px; left:5px;z-index:90; background:white;}	
+#divCardImage { width:800px; height:800px;position:absolute; cursor:move;  }
+
+#pDragHint {font-size:0.9em;padding:2em 1em 0;z-index:90;}
+#pLoading {font-size:1.2em;padding:0.3em; z-index:999; top: 50px; -moz-opacity:0.6!important;filter:alpha(opacity="60")!important;opacity:0.6!important;
+	position: absolute; left: 120px; color: #fff; /*background-color: #333;*/ }
+/* yuk - IE6/7 hack to fix * */
+html>/**/body #pLoading {top: 35px;}
+
+/*Picker*/
+div.buttons #btnStage1 {margin-top: 13px;}
+#hFinishedCards #sPickerInfo { background-color: #E1F8D3; color: #656565; }
+
+/* Design card back */
+#divPreview #imgAvatarBack {position:absolute; top:20px; left:238px !important;}
+#divPreview #imgAvatarBack.none {position:absolute; top:35px; left:238px !important;}
+#ulIcons {  margin-bottom: 0; height:95px;}
+#divNextBackLinks {width:300px; clear:left; margin: 0 0 6px 2px; position: relative;}
+#partnerNextLink { position: absolute; right: 0px; } 
+#divPreview #imgAvatarBack.partner { left: 238px !important; top:20px !important; }
+
+/* colours */
+#divFrontColourPicker {position:absolute; top:14px; left:15px; width: 250px;}
+#divFrontColourPicker h5 {padding-left:5px; padding-bottom:2px}
+#divFrontColourPicker a:active { outline: none; }
+#divFrontColourPicker a:focus { -moz-outline-style: none;}
+#ulFrontColourPicker, #ulFrontPatternPicker {text-align:center;}
+#ulFrontColourPicker li a {display:block; width:17px; height:17px;border:solid 2px #fff; cursor:pointer;}
+#ulFrontColourPicker li input { position: absolute; top: 0px; left: -2px; z-index:-1;}
+#ulFrontColourPicker li {position: relative; width:21px; height:21px; margin:0px 2px 2px 0px;border: 1px solid #EEEBEC; }
+#ulFrontColourPicker li.selected { border:1px solid #333333;width:21px; height:21px;}
+#lblTextColour_a2238e, #a_a2238e {background:#a2238e;}
+#lblTextColour_007236, #a_007236 {background:#007236;}
+#lblTextColour_72bf44, #a_72bf44 {background:#72bf44;}
+#lblTextColour_ff7300, #a_ff7300 {background:#ff7300;}
+#lblTextColour_f36f21, #a_f36f21 {background:#f36f21;}
+#lblTextColour_b9bd17, #a_b9bd17 {background:#b9bd17;}
+
+#lblTextColour_7961aa, #a_7961aa {background:#7961aa;}
+#lblTextColour_a7a038, #a_a7a038 {background:#a7a038;}
+#lblTextColour_faa61a, #a_faa61a {background:#faa61a;}
+#lblTextColour_ed1c24, #a_ed1c24 {background:#ed1c24;}
+#lblTextColour_c4151c, #a_c4151c {background:#c4151c;}
+
+#lblTextColour_ed0e69, #a_ed0e69 {background:#ed0e69;}
+#lblTextColour_c40063, #a_c40063 {background:#c40063;}
+#lblTextColour_6f2b90, #a_6f2b90 {background:#6f2b90;}
+#lblTextColour_482f92, #a_482f92 {background:#482f92;}
+#lblTextColour_023f88, #a_023f88 {background:#023f88;}
+
+#lblTextColour_00aab5, #a_00aab5 {background:#00aab5;}
+#lblTextColour_0092c8, #a_0092c8 {background:#0092c8;}
+#lblTextColour_007dc5, #a_007dc5 {background:#007dc5;} 
+#lblTextColour_005aaa, #a_005aaa {background:#005aaa;} 
+#lblTextColour_000000, #a_000000 {background:#000;} 
+
+/* patterns */
+#divFrontPatternPicker {position: absolute; top:103px; left:15px; width: 180px;}
+#divFrontPatternPicker a:active { outline: none; }
+#divFrontPatternPicker a:focus { -moz-outline-style: none;}
+#ulFrontPatternPicker li label {cursor: pointer; cursor:hand; }
+#ulFrontPatternPicker li a {display:block; width:26px; height:26px;border:solid 2px #fff; cursor:pointer;}
+#ulFrontPatternPicker li input { position: absolute; top: 0px; left: 0px; z-index:-1; }
+#ulFrontPatternPicker li {position: relative; width:30px; height:30px; margin:0px 3px 3px 0px; border: 1px solid #EEEBEC;}
+#ulFrontPatternPicker li.selected { border:1px solid #333333;  }
+
+#lblTextPatternNone, #a_solid {background:#999;}
+#lblTextPatternCamo, #a_cammo {background:url(../images/pattern_camo.png) no-repeat 0 0;}
+#lblTextPatternDots, #a_dots {background:url(../images/pattern_dots.png) no-repeat 0 0;}
+#lblTextPatternFlower, #a_flower {background:url(../images/pattern_flower.png) no-repeat 0 0;}
+#lblTextPatternStripe, #a_stripe {background: url(../images/pattern_stripe.png);}
+
+/* fonts */
+#divFrontFontPicker { position:absolute; top:12px; left:675px;width:230px;}
+#ulFrontFontPicker li label { margin-left: 0px; -moz-opacity:1 !important; filter:alpha(opacity="1")!important; opacity:1 !important; 
+	padding: 4px 0px 0px 65px; background-repeat: no-repeat; background-position: center left;} /*  background-position: 0 100%; */
+#ulFrontFontPicker {margin-top: 2px;}
+#ulFrontFontPicker li {height: 22px; margin: 0px 0px 6px 0px; float: left; width: 105px;}
+#ulFrontFontPicker li.selected {margin: 0px;}
+
+#divFrontTextControls { position:absolute; top:148px; left:360px;width:200px; z-index:40;}
+#ulFrontTextControls {margin-left:30px}
+#ulFrontTextControls  a {display:block; width:21px; height:21px; margin-right:5px}
+#ulFrontTextControls #aZoomIn {background:url(../images/zoomin.png) no-repeat;}
+#ulFrontTextControls #aZoomOut {background:url(../images/zoomout.png) no-repeat;}
+#ulFrontTextControls #aRotateRight {background:url(../images/rotateright.png) no-repeat;}
+#ulFrontTextControls #aRotateLeft {background:url(../images/rotateleft.png) no-repeat;}
+#ulFrontTextControls #aReverseColours {background: url(../images/inverse.png); width:30px!important; height:24px}
+
+#divSaveCard {position: relative; top: 35px;}
+#divSaveCard input {position: relative; left: 364px; top:5px; padding: 1px 3px; overflow:visible;}
+#pFillRainbox { position: absolute; left:15px; top:0;}
+
+#pRainboxText {position: relative; padding:0;margin:0 0 10px 0;}
+
+/* Edit mask */
+#divEditMask {background:#333; width:914px; height:210px; z-index:100; position:absolute; top:0;left:0;
+	-moz-opacity:0.2!important;filter:alpha(opacity="20")!important;opacity:0.2!important;}
+
+#divTopButton a {position:absolute; left: 20px;}
+	
+/* Finished cards */
+#hFinishedCards {position:relative;width:892px;margin-top:15px;padding-left:15px;}
+.blockheader  {color:white;background:#656565;font-weight:normal; font-size:1em; padding:0.1em 0.6em;position:relative; }
+#pDesignHint {text-align:center; color:#808080;font-size:1.1em; margin-top:30px;}
+
+/* sPickerInfo with padding-bottom hack for IE6 :-( */
+#sPickerInfo {position:absolute; right:-1px; top:0px;  text-align: center;   
+	display:block; width:150px; height:100%;padding-bottom: 0; _padding-bottom: 0.2em;}
+
+#divFinishedCards {padding-left:15px; border: 2px dashed #C8C3C3; float: left; width: 898px; min-height: 130px; margin-top:10px;}
+#divFinishedCardThumnbnails {margin-top:15px}
+div.finishedcardwrapper {position:relative;float:left;width:178px;height:80px; background: url(../livejournal/images/thumbnailshadow.png) no-repeat;
+		margin-bottom:10px;  }
+div.finishedcardwrapper a {position:absolute; bottom:0;font-size:0.8em}
+div.finishedcardscroller {width:150px;height:60px;position:absolute;overflow:hidden;} 
+div.finishedcardimage {position:absolute;width:400px;height:400px;}

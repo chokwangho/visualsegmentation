@@ -9,7 +9,7 @@ require 'BlockTree'
 require 'Tree'
 require 'Perceptron'
 
-PDOC = 5
+PDOC = 6
 
 def visualizeSections(html_doc, location)
   new_location = location + "-vips.html"
@@ -86,7 +86,7 @@ end
 
 if __FILE__ == $0
   
-  location = "Hybrid.retrieved.html"
+  location = "MOO.retrieved.html"
   doc = Hpricot(open(location))
   body = doc.search("/body")
 

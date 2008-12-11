@@ -1,0 +1,175 @@
+/* This file is for css for reusable controls styles (colour pickers etc) */
+
+/* Graphic font picker */
+#lblTextFrontArial {background-image: url(../images/font_modern.png); }
+#lblTextFrontAminta {background-image: url(../images/font_gothic.png);  }
+#lblTextFrontCursive {background-image: url(../images/font_tidy.png); }
+#lblTextFrontDymo {background-image: url(../images/font_sticky.png);}
+#lblTextFrontFontlery {background-image: url(../images/font_script.png); }
+#lblTextFrontKimberley {background-image: url(../images/font_chunky.png);  }
+#lblTextFrontLadyIce {background-image: url(../images/font_nice.png); }
+#lblTextFrontShortcut {background-image: url(../images/font_messy.png); }
+#lblTextFrontStencilia {background-image: url(../images/font_stencil.png); }
+#lblTextFrontVagRounded {background-image: url(../images/font_rounded.png);}
+#lblTextFrontDrawn {background-image: url(../images/font_drawn.png);}
+#lblTextFrontSwirly {background-image: url(../images/font_swirly.png);}
+#lblTextFrontTidy {background-image: url(../images/font_tidy2.png);}
+#lblTextFrontTraditional {background-image: url(../images/font_traditional.png);}
+
+/* Textomatic text box */
+#divFrontText {text-align:center;width:430px;padding:10px 10px 10px 10px;margin: 0 auto;
+	margin-top:10px; border:1px solid #FFC18F; background:#FFF6EF; border-bottom:none;}
+#divFrontText  label {font-size:1.4em;}
+#divFrontText input.textbox {width:410px;font-size:1.8em;}
+#txtFrontText {width:400px; font-size:1.3em; text-align:center;margin-top:5px;}
+#divMakeCard {text-align:center;margin:0 auto;text-align:center;background:url(../images/point.png);
+	width:455px; height:45px;margin-bottom:3px;}
+#divMakeCard p {display: inline;  margin: 0px 93px 0px 0px;}
+#divMakeCard input {position:relative; top:-2px;}
+
+/* Double colour picker */
+#ulDoubleColourPicker {width:180px;margin-left:2px;height:2.1em; padding-top:0.4em; position:relative; left:5px; height: 94px;}
+#ulDoubleColourPicker li {margin-right:4px;position:relative; width:27px; height:27px; border:solid 1px #eeebec;background:white;}
+#ulDoubleColourPicker li a {position:relative;display:block; text-decoration:none; width:23px; height:23px;
+	margin-bottom:5px;top:2px; left:2px;overflow:hidden;text-align:center; color:white}
+#ulDoubleColourPicker li span {font-size:20px; font-variant:small-caps;font-weight:bold; font-family:georgia, serif;}	
+#ulDoubleColourPicker li.selected {border:solid 1px #333;}
+#ulDoubleColourPicker input {position:absolute; top:0;left:0;z-index:-1;}
+
+/* Align tool */
+#divAlignTool a {width:27px;height:24px;margin-right:10px;}
+#divAlignTool a img {border:solid 1px #ada6a6;}
+#divAlignTool a:active {outline:none;}
+#divAlignTool a.selected img {border:solid 1px black;}
+#divAlignTool strong {padding-right:1em;}
+
+/* Product preview */
+#divProductLinkPreview {width:100%;z-index:1000;position:absolute;top:150px;text-align:center}
+#divProductLinkPreview div {width:584px;margin:0 auto;background:white;position:relative;padding:8px;}
+#divProductLinkPreview div div {border:solid 1px #808080;width:566px;padding:8px;}
+#divProductLinkPreview div div div {border:0;width:auto;text-align:left;}
+#divProductLinkPreview #imgProdShot {float:left;margin-right:32px;}
+#divProductLinkPreview #olSteps {width:480px; margin:0 auto;}
+
+/* Toolbar */
+#divToolbarNew {height:34px; padding:2px; margin-bottom:16px; z-index: 20; position:relative;} 
+#divToolbarNew dl {margin:0 3px 0 0; padding:4px; background:#dfdfdf;border:solid 1px #ada6a6;height:34px; float:left; z-index: 25;}
+#divToolbarNew dl, #divToolbarNew dt, #divToolbarNew dd {position:relative;}
+#divToolbarNew dl span.label {float:left; display:block; padding:5px 10px 2px 4px; }
+#divToolbarNew a:focus {-moz-outline-style: none;}
+#divToolbarNew a {text-decoration: none;}
+
+#divToolbarNew dl dt span.control {display:block; float:right; height:34px; padding-right:14px; position:relative;}
+#divToolbarNew dl dt span.control a.clickbutton {display:block; position:absolute;height:33px; width:14px; right:0; top:0; background:url(../images/dropdown.png) top left;}
+#divToolbarNew dl dt span.control a.clickbutton:active {background:url(../images/dropdown.png) bottom left;}		
+#divToolbarNew span.selected {display:block; height:31px; position:relative; float:left; border-top:solid 1px #ebeaea; border-left:solid 1px #ebeaea; border-bottom:solid 1px #d0d0d0;border-right:none;}
+#divToolbarNew dl dd ul {position:absolute; right:-5px; top:38px; z-index:30; float:right; }
+
+#divToolbarNew #dlColourPicker {width: 120px;}
+* html #divToolbarNew #dlColourPicker ul {right: 57px;}
+#divToolbarNew #dlInversePicker {width:150px;}
+#divToolbarNew #dlFontPicker {width:200px}
+* html #divToolbarNew #dlFontPicker ul {width: 132px; right:46px;}
+#divToolbarNew #dlAlignmentPicker {width:200px; margin-right:0;}
+#divToolbarNew #dlTemplatePicker {width:180px;}
+#divToolbarNew #dlTemplatePicker ul { width: 120px; }
+* html #divToolbarNew #dlTemplatePicker ul { width: 128px; right: 124px;}
+
+/* hack for FireFox2 */
+#divDisabledToolbar, x:-moz-any-link { position: absolute; height:45px; width: 416px; margin-top: 18px; z-index: 999; margin-left:497px;
+	background-color: #DFDFDF; -moz-opacity:0.3!important;filter:alpha(opacity="30")!important;opacity:0.3!important;
+	_margin-top: 2px;_height:44px;}
+
+/*hack for resetting FireFox3 defaults */
+#divDisabledToolbar, x:-moz-any-link, x:default { position: absolute; height:45px; width: 416px; margin-top: 2px; z-index: 999; margin-left:497px;
+	background-color: #DFDFDF; -moz-opacity:0.3!important;filter:alpha(opacity="30")!important;opacity:0.3!important;
+	_margin-top: 2px;_height:44px;}
+
+/*hack for non-firefox browsers (IEsmegging6) */
+#divDisabledToolbar, x:default { position: absolute; height:45px; width: 416px; margin-top: 2px; z-index: 999; margin-left:497px;
+	background-color: #DFDFDF; -moz-opacity:0.3!important;filter:alpha(opacity="30")!important;opacity:0.3!important;
+	_margin-top: 2px;_height:44px;}
+
+/* Flash image controls */
+#divFlaImageControls { width: 450px; margin-bottom: 32px; }
+#divFlaImageControls #ulFrontTextControls { margin-left: 0;  }
+#divFlaImageControls li.label { margin-right: 8px; }
+#divFlaImageControls .aAddImage { display:block; height:26px; margin-right:23px; width:28px; margin-top: -2px; } 
+#divFlaImageControls #aAddImageOn { background:url(../images/add_images.png) no-repeat top left;} 
+#divFlaImageControls #aAddImageOff { background:url(../images/add_images.png) no-repeat bottom left;}
+#divFlaImageControls .aClearImage { width: auto; margin-left: 32px; cursor: default;}
+#divFlaImageControls .aAddImageLink { width: auto; display: inline; }
+#pCanvasBleedWarning { padding: 0 4px; margin-top: 0px; background:#FFEBE8 none repeat scroll 0%; border:1px solid #F03B1F;}
+
+/* Zoom controls */
+.zoomControl { cursor: default; }
+.aZoomInOff { background: transparent url(../images/zoomin_bw.png) no-repeat scroll 0%; }
+.aZoomInOn { background: transparent url(../images/zoomin.png) no-repeat scroll 0%; }
+.aZoomOutOff { background: transparent url(../images/zoomout_bw.png) no-repeat scroll 0%; }
+.aZoomOutOn { background: transparent url(../images/zoomout.png) no-repeat scroll 0%; }
+
+/* Colour picker */
+dl.colourpicker span.selected {width:31px;}
+dl.colourpicker span.selected, dl.colourpicker ul li {display:block; position:relative; width:31px; height:31px;}
+dl.colourpicker ul a, dl.colourpicker span.selected a {z-index:30; display:block; width:25px; height:25px; text-decoration:none; position:absolute; top:0; left:0; border:solid 3px white;}		
+html>body dl.colourpicker ul a, html>body dl.colourpicker span.selected a {background:url(../images/colourbevel.png);} /* Not for IE6 */
+dl.colourpicker ul a:hover {background:none; cursor:pointer;}
+dl.colourpicker ul {width:110px; padding-bottom:4px; background:#dfdfdf; border:solid 1px #ada6a6; border-top:dotted 1px #ccc;}
+dl.colourpicker ul li {margin-top:4px; margin-left:4px;}
+
+/* Inverse picker */
+dl.inversepicker ul {right:0 !important; top:0 !important;}
+* html dl.inversepicker ul { top: -38px; left: 5px;}
+dl.inversepicker ul a {width:30px; height:30px; border:solid 1px #ada6a6; float:left;}
+#cbInverseColour {position: absolute; left: -9999px;}
+
+/* Font picker */
+dl.fontpicker span.selected a {display:block; width:120px; height:30px;}
+dl.fontpicker ul a {display:block; width:120px; height:30px; border:dotted 1px #ada6a6;}
+dl.fontpicker ul a:hover {border:solid 1px #ff9f5f;}
+dl.fontpicker ul {padding-bottom:4px; background:#dfdfdf; border:solid 1px #ada6a6; border-top:dotted 1px #ccc;}
+dl.fontpicker ul li {margin: 4px 4px 0 4px;}
+
+/* Alignment picker */
+dl.alignmentpicker ul a {width:27px; height:24px; border:solid 1px #ada6a6; float:left;}
+dl.alignmentpicker ul {position:relative!important; right:0!important; top:0!important;}
+dl.alignmentpicker ul li {margin-top:4px; margin-left:4px; padding:1px;}
+dl.alignmentpicker ul li.selected {border:solid 1px #ff9f5f; padding:0;}
+
+/* Template picker */
+dl.templatepicker span.selected a {display:block; width:30px; height:30px;}
+dl.templatepicker ul a {display:block; width:30px; height:30px; border:1px dotted #ada6a6;}
+dl.templatepicker ul a:hover {border:solid 1px #ff9f5f;}
+dl.templatepicker ul {padding-bottom:4px; background:#dfdfdf; border:solid 1px #ada6a6; border-top:dotted 1px #ccc;}
+dl.templatepicker ul li {margin: 4px 4px 0 4px;}
+
+/* Template selector */
+#divChooseFront { margin: 16px 0; }
+
+#ulLayoutFront li, #ulLayoutBack li { margin: 0 16px 16px 0; padding: 8px; border: 1px solid #e1dfdf; width: 270px; height: 155px; display: block; text-align: center; background: url(/images/businesscard_template_background.png) top repeat-x;}
+#ulLayoutFront li, #ulLayoutBack li { height: auto; }
+#ulLayoutFront li.label, #ulLayoutFront li img, #ulLayoutBack li.label, #ulLayoutBack li img { cursor:pointer; }
+#ulLayoutFront li.last, #ulLayoutBack li.last { margin-right: 0;}
+#ulLayoutFront div, #ulLayoutBack div {margin: 0px; }
+#ulLayoutFront .portrait, #ulLayoutBack .portrait {height: 185px;}
+#ulLayoutFront .portrait img, #ulLayoutBack .portrait img {width: 124px; float:left;}
+#ulLayoutFront .portrait div, #ulLayoutBack .portrait div { margin-top: 132px;}
+
+#ulLayoutBack img { margin: 0 auto; display:block; min-width:124px; min-height:124px;}
+
+/* Stock selector */
+#divChooseStock { margin: 16px 0; }
+#divChooseStock h3 {border-bottom: 1px solid #ccc; margin: 8px; padding: 0 0 4px;}
+#divChooseStock p {margin: 8px;}
+#divChooseStock img {float:left; margin: 8px 16px 8px 8px;}
+#ulStockType li { width: 447px ; margin: 0 16px 1.6em 0; border: 1px solid #ccc; position:relative}
+#ulStockType li img { cursor: pointer; } 
+#ulStockType li.last {margin-right:0;}
+#ulStockType #ulFeatures {margin: 16px 0 16px 124px;}
+#ulStockType ul.bulletlist li {width: 250px; border:none; background:url(../images/bullet.png) no-repeat 0 6px; padding-left:16px; margin: 0;}
+#divChooseStock #divStock {padding: 12px 8px; border-top:1px solid #ccc;}
+#divChooseStock span.footnote {position:absolute; top: 101%; left: 4px; font-size: .9em;}
+
+
+#divMask {position:absolute;}
+#divMask[id]{ position:fixed; }
