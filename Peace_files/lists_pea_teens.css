@@ -1,0 +1,417 @@
+/*
+Peace Corps Teen Site
+lists_pea_teen.css
+
+description:
+Removes default browser styling on many elements and creates
+more general, cross-browser rules.
+
+version: 2007-04
+author: Cobey Potter, Threespot
+
+copyright: 2007
+-------------------------------------------------------- */
+
+/*
+Table of Contents
+	- content ul
+	- spotlight
+	- singular
+	- photoalbum
+	- recipe_nav
+	- vol_list
+	- inner_ol
+	- wallpost
+*/
+
+/*------- content ul -------- */
+
+#content ul {
+	padding:5px 40px 5px 25px;
+}
+	
+	.page #content ul{
+		margin-left:14px;
+	}
+	
+	.special ol {margin-left:41px;}
+	
+	#content ul.content-header {
+		padding-right:15px;
+		margin:-5px 0 -10px;
+		width:460px;
+		height:30px;
+		background:#7f2700 url("http://www.peacecorps.gov/teens/images/titles/title_recipes_country_arrow.gif") no-repeat 14px 14px;
+		list-style:none;
+	}	
+		#content ul.content-header li{
+			float:right;
+			margin-top:6px;
+		}
+			
+			#content ul.content-header li.first{
+				float:left;			
+				margin-left:3px;	
+				color:#fff;	
+				font-size:1.4em;
+			}
+			
+				#content ul.content-header li a {
+					padding:0 3px;
+					color:#de9e10;
+					font-weight:bold;
+					text-decoration:none;
+				}
+
+/*------- spotlight -------- */
+				
+#content ul.spotlight {
+	padding:0 35px 37px 25px;
+	list-style:none;
+}
+
+	.recipe-list .spotlight {
+		padding:0 35px 37px 0;
+	}
+	
+	ul.spotlight li {
+		clear:both;
+		padding-top:20px;
+		height:1%;
+		border-top:1px solid #e8d9ca;
+	}
+
+	.spotlight li.first {border:0;}	
+
+	.spotlight img,
+	.vol_list img {
+		padding:3px;
+		margin:0 0 18px;
+		border:1px solid #ccc;
+	}
+	
+	.spotlight img.content-image,
+	.singular img {
+		float:right;
+		margin-top:9px;
+	}		
+	
+	spotlight img.content-image {
+		float:left;
+		margin-left:-20px;}
+			
+	.vol_list img {
+		float:left;
+		margin-right:25px;
+	}
+
+/*------- singular -------- */
+	
+.singular {
+	margin:20px 35px 0 25px;
+	padding:0;	
+}
+
+.spotlight .spotlight-content,
+.singular ul {
+	float:left;
+	margin-right:10px;
+	width:220px;
+	list-style:none;
+}
+
+div.spotlight.singular ul{
+width:203px;
+padding-left:15px !important;
+}
+
+	
+	.singular ol {
+		margin-left:30px;
+		padding-bottom:0;
+	}
+
+			
+		.singular ul li,
+		.singular ol li{
+			border:0;
+			padding:2px 0;
+			
+		}
+			
+				.spotlight .spotlight-content li{
+					border:0;
+					padding:0;
+					margin-left:-25px;
+					line-height:15px;
+				}
+				
+				.spotlight .spotlight-content li.region{
+					padding:0;
+					margin-left:-37px;
+					line-height:14px;
+				}
+			
+				.spotlight .spotlight-content li.region img {
+					padding:0;
+					margin:0;
+					border:0;
+				}
+				
+				.spotlight .spotlight-content li.country{
+					font-size:1.1em;
+					color:#7f2700;
+					font-weight:bold;
+					text-transform:uppercase;
+				}
+				
+				.spotlight .spotlight-content li a {
+					display:block;
+					margin:18px 0;
+					font-weight:bold;
+					color:#de9e10;
+					text-decoration:none;
+				}	
+					.recipe-list .spotlight-content{
+						padding-right:0 !important;
+					}
+					
+div.spotlight.singular p {padding-left:0 !important;}
+
+/*------- photoalbum -------- */
+
+#content .photoalbum {
+	margin:10px 20px 25px 25px;
+	padding:10px 35px 37px 25px;
+	width:395px;
+	border-top:1px solid #e8d9ca;
+	list-style:none;
+}
+	
+	div.photoalbum {padding:0 !important;}
+	
+	.photoalbum li{
+		float:left;
+		padding:5px;
+		width:180px;
+		text-align:center;
+	}
+
+	.photoalbum img{
+		float:none;
+		margin:0 auto 5px;
+		padding:3px;
+		display:block;
+		border:1px solid #ccc;
+	}
+				
+	.photoalbum a{
+		display:block;
+		text-decoration:none;
+	}
+				
+		.photoalbum a:hover{text-decoration:underline;}
+				
+		.photoalbum a:hover img{background:#ccc;}
+				
+	.photoalbum ol {margin-left:20px;}
+						
+		.photoalbum ol li{
+			float:none;
+			padding:2px;
+			width:100%;
+			text-align:left;
+		}
+				
+	.photoalbum p {padding:5px 0 !important;}
+	
+/*------- vol_list -------- */
+
+.vol_list {
+	margin:12px 0 0 25px;
+	padding-bottom:14px;
+	width:438px;
+	border-top:1px solid #ac8156;
+	border-bottom:1px solid #ac8156;
+}
+		
+	.vol_list div {
+		clear:both;
+		padding:9px 0 18px;
+		border-top:1px solid #e8d9ca;
+	}
+		
+		.vol_list div.first {border:0;} 
+		
+	.vol_list dl {margin-left:25px;}
+		
+
+		.vol_list dt {
+			padding-bottom:9px;			
+			font-size:1.1em;
+			color:#462402;
+		}
+		
+			.vol_list dt strong {
+				color:#752700;
+				font-size:1.2em;
+				line-height:18px;
+				font-weight:bold;
+			}
+		
+			.vol_list dt span {
+				display:block;
+				margin:-4px 0 0;}
+		
+		.vol_list dd {
+			font-size:1.1em;
+			line-height:16px;
+			color:#5f5f5f;
+		}
+		
+			.vol_list dd strong {
+				color:#462402;
+				font-size:1.1em;
+				font-weight:bold;
+			}
+		
+			.vol_list dd a {
+				display:block;
+				padding-top:9px;
+				background: url("http://www.peacecorps.gov/images/buttons/view_more.gif") no-repeat 0 9px;
+			}
+
+/*------- quiz -------- */
+
+.quiz{
+	margin:15px 25px 0;
+	padding:5px 0px;
+	border-top:1px solid #ac8156;
+	border-bottom:1px solid #ac8156;
+}
+
+	.quiz div h3 {
+		text-transform:none;
+		padding:0;
+		margin:10px 0 0;
+	}
+	
+	.quiz li {
+		margin:0 15px;
+		padding:5px 0;
+		font-weight:bold;
+	}
+			
+		.quiz label,
+		.wallpost label {
+			display:inline;
+			font-weight:normal;
+			clear:both;
+		}
+		
+		.wallpost input#submit {
+			margin-top:8px;
+			margin-left:-15px;
+			width:100px;
+			border:2px solid #452405;
+			background:#FFF1D4;
+			font-weight:bold;
+			font-size:1.1em;
+			cursor:pointer;
+		}
+		
+		.quiz #quiz_submit, 
+		.quiz .quiz_submit{
+			margin:15px 0 0;
+			width:145px;
+			border:0;
+			cursor:pointer;
+		}
+
+		
+		.quiz label input {
+			padding:0;
+			margin:0;
+			top:2px;
+		}
+		
+		.quiz label a {
+			display:block;
+			height:18px;
+			width:145px;
+			background:url('http://www.peacecorps.gov/teens/images/buttons/bu_seecorrect.gif')  0 5px no-repeat;
+			text-indent:-1000px;
+			overflow:none;
+		}
+		
+		.quiz label a:focus, .quiz label a:active  {outline:none;}
+		
+		.quiz .quiz_list label, .wallpost label {
+			display:block;
+			font-weight:normal;
+		}
+	
+		.quiz .quiz_list label {
+			padding:2px 0 1px 25px;
+		}
+		
+		.quiz .quiz_list label input {
+			padding:0;
+			margin:0 5px -2px 0;
+		}
+		
+/*------- inner_ol -------- */
+.inner_ol {
+	list-style:upper-alpha;
+	list-style-position:inside;
+}
+		
+	.inner_ol li {font-weight:normal;}
+
+
+/*------- wallpost -------- */	
+
+.wallpost {padding:5px 25px;}
+		
+	.wallpost label, 
+	.wallpost p {		
+		display:block;
+		padding:5px 0 !important;
+	}
+						
+	.wallpost #email_field {
+		display:none;
+	}
+		
+	.wallpost input,
+	.wallpost textarea {
+		display:block;
+		padding:2px;
+		height:16px;
+		border:1px solid #452405;
+	}
+		
+	.wallpost .radio, 
+	.wallpost .radio input {
+		display:inline;
+		border:0;
+	}
+		
+	.wallpost .radio input {
+		margin:10px 10px -5px 0;
+	}
+		
+	.wallpost textarea { 
+		height:100px;
+		width: 300px;
+		font-size:1.1em;
+	}
+		
+	.wallpost input#submit {
+		margin-left:0;
+		padding:0;
+		width:120px;
+		height:20px;
+	}
+	
+	

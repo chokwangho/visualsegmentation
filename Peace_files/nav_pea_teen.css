@@ -1,0 +1,304 @@
+/*
+Peace Corps Teen Site
+nav_pea_teen.css
+
+description:
+Removes default browser styling on many elements and creates
+more general, cross-browser rules.
+
+version: 2007-04
+author: Cobey Potter, Threespot
+
+copyright: 2007
+-------------------------------------------------------- */
+
+/*
+Table of Contents
+	- general, shared styles
+	- main_nav
+		- nav_lvl_1
+		- nav_lvl_2
+		- nav_lvl_3
+		- highlight
+	- secondary_nav
+	- tertiary_nav	
+	- recipe_nav
+*/
+
+/*------- general, shared styles -------- */
+
+#nav_lvl_1, 
+#nav_lvl_2, 
+#nav_lvl_3, 
+#highlight_nav,
+#secondary_nav,
+#tertiary_nav {list-style:none;}
+
+#nav_lvl_1 li a,
+#nav_lvl_2 li a {
+	display:block;
+	height:130px;
+	width:120px;
+	padding:0 0 13px;
+	text-indent:-10000px;
+	overflow:hidden;
+	background-repeat: no-repeat;
+}
+
+/*------- main_nav -------- */
+
+#main_nav {
+	position:absolute;
+	top:109px;
+	left:8px;
+	width:250px;
+	height:305px;
+	background: url("http://www.peacecorps.gov/teens/images/nav/bg_nav.jpg") no-repeat;
+}
+
+	#section #main_nav, 
+	.special #main_nav {
+		height:233px;
+		background-image: url("http://www.peacecorps.gov/teens/images/nav/bg_nav_sub.jpg");
+	}
+
+ 	.special #main_nav {background-image: url("http://www.peacecorps.gov/teens/images/nav/bg_nav_sub_why.jpg");}
+	
+/*------- main_nav nav_lvl_1 -------- */
+
+#nav_lvl_1 li {
+		left:138px;	
+		top:95px;	
+		width:120px;
+}
+	
+	#section #nav_lvl_1 li,	
+	.special #nav_lvl_1 li {top:35px;}
+	
+	#nav_lvl_1 li.first{display:none;}
+	
+		#section #nav_lvl_1 li a, 
+		.special #nav_lvl_1 li a {padding:0 0 8px;	}
+		
+		#nav_lvl_1 li a:hover {background-position: -120px 0;}
+		#nav_lvl_1 li.on a {background-position: -240px 0;}
+		
+	#elm_inspire a {background:url("http://www.peacecorps.gov/teens/images/nav/1_inspired.gif");}
+	#elm_involve a {background:url("http://www.peacecorps.gov/teens/images/nav/2_involved.gif");}
+	#elm_ready a {background:url("http://www.peacecorps.gov/teens/images/nav/3_ready.gif");}
+	#elm_loud a {background:url("http://www.peacecorps.gov/teens/images/nav/4_loud.gif");}
+	#elm_more a {background:url("http://www.peacecorps.gov/teens/images/nav/5_more.gif");}
+
+/*------- main_nav nav_lvl_2 -------- */
+	
+#nav_lvl_2 {margin:126px 0 0 22px;}
+
+	#nav_lvl_2 li{
+		width:220px;
+		padding:0 10px;
+		margin:0;			
+	}
+	
+	#nav_lvl_2 li a {width:220px;}
+	
+			#nav_lvl_2 li a:hover,
+			#highlight_nav #what a:hover,
+			#highlight_nav #where a:hover,
+			#nav_lvl_2 li a:hover,
+			#nav_lvl_2 li.no_sub a,			
+			#highlight_nav #what.on a,
+			#highlight_nav #where.on a
+			{background-position: -220px 0 !important;}
+			
+			#nav_lvl_2 li.on a{background-position: -440px 0;}
+			
+			
+			
+			#elm_2_profiles a {background:url("http://www.peacecorps.gov/teens/images/nav/subnav_1_profiles.gif");} 
+			#elm_2_stories a {background:url("http://www.peacecorps.gov/teens/images/nav/subnav_1_stories.gif");} 
+			#elm_2_correspond a {background:url("http://www.peacecorps.gov/teens/images/nav/subnav_1_correspond.gif");}
+			
+			#elm_2_choosecause a {background:url("http://www.peacecorps.gov/teens/images/nav/subnav_2_choosecause.gif");} 
+			#elm_2_advocate a {background:url("http://www.peacecorps.gov/teens/images/nav/subnav_2_advocate.gif");} 
+			#elm_2_startaclub a {background:url("http://www.peacecorps.gov/teens/images/nav/subnav_2_club.gif");}
+			#elm_2_volunteernow a {background:url("http://www.peacecorps.gov/teens/images/nav/subnav_2_volunteernow.gif");} 
+			#elm_2_fundraising a {background:url("http://www.peacecorps.gov/teens/images/nav/subnav_2_fundraise.gif");} 
+			#elm_2_resources a {background:url("http://www.peacecorps.gov/teens/images/nav/subnav_2_resources.gif");} 
+			
+			#elm_2_recipe a {background:url("http://www.peacecorps.gov/teens/images/nav/subnav_4_recipes.gif");}
+			#elm_2_trivia a {background:url("http://www.peacecorps.gov/teens/images/nav/subnav_4_trivia.gif");}
+			#elm_2_holidays a {background:url("http://www.peacecorps.gov/teens/images/nav/subnav_4_holidays.gif");}
+			#elm_2_lld a {background:url("http://www.peacecorps.gov/teens/images/nav/subnav_4_look.gif");}
+			
+			#elm_2_wcyd a {background:url("http://www.peacecorps.gov/teens/images/nav/subnav_3_what.gif");} 
+			#elm_2_actionnow a {background:url("http://www.peacecorps.gov/teens/images/nav/subnav_3_action.gif");} 
+			#elm_2_genqual a {background:url("http://www.peacecorps.gov/teens/images/nav/subnav_3_general.gif");}
+			
+			#elm_2_peerhear a {background:url("http://www.peacecorps.gov/teens/images/nav/subnav_5_peerhear.gif");} 
+			#elm_2_wallpost a {background:url("http://www.peacecorps.gov/teens/images/nav/subnav_5_wallpost.gif");}
+	
+	
+/*------- main_nav nav_lvl_3 -------- */
+
+#nav_lvl_3 {margin:-11px 0 14px;}
+
+		#nav_lvl_3 li {
+			padding:0 0 0 15px;
+			margin:0 0 0 6px;
+		}
+		
+			#nav_lvl_3 li a {
+				padding:2px 0;
+				width:200px;
+				height:1%;
+				color:#de9e10;
+				background:none;
+				font-size:1.1em;				
+				line-height:1.2em;
+				text-decoration:none;
+				overflow:visible;
+				text-indent:0;
+			}
+			
+			#nav_lvl_3 li a:hover, 
+			#nav_lvl_3 li a:active,
+			#nav_lvl_3 li.on a {
+				color:#603001;
+				font-weight:bold;
+			}
+
+/*------- main_nav highlight -------- */
+
+.highlight {
+		padding:25px 0;
+		width:233px;
+		background:url("http://www.peacecorps.gov/teens/images/why/bracket.gif") no-repeat bottom;
+}
+
+	.special .highlight {margin-top:120px;}
+	
+	.highlight a {
+		display:block;
+		margin:0 auto;
+		width:161px;
+		height:45px;
+		background:url("http://www.peacecorps.gov/teens/images/why/why_pc_white.gif") no-repeat;
+		text-indent:-10000px;
+		overflow:hidden;
+	}
+		
+		.special .highlight a {
+			height:68px;
+			background-image:url("http://www.peacecorps.gov/teens/images/why/why_pc_why_now.gif");
+		} 
+		
+		#highlight_nav li a {height:25px;}
+		
+		#highlight_nav #what a{background:url("http://www.peacecorps.gov/teens/images/nav/subnav_whypc_what.gif") no-repeat;}
+		#highlight_nav #where a{background:url("http://www.peacecorps.gov/teens/images/nav/subnav_whypc_where.gif") no-repeat;}
+
+/*------- secondary_nav, tertiary_nav shared -------- */
+
+	#secondary_nav li,
+	#tertiary_nav li {
+		float:left;
+		padding:0 3px;
+		height:10px;
+		border-left:1px solid #999;
+		line-height:.9em;
+	}
+	
+	#secondary_nav li.first,
+	#tertiary_nav li.first {border:0;}
+	
+		#secondary_nav li a,
+		#tertiary_nav li a {
+			color:#999;
+			text-transform: uppercase;
+			font-size:.9em;
+			font-weight:bold;
+			text-decoration:none;
+		}
+
+		#secondary_nav li a:hover,
+		#tertiary_nav li a:hover {
+			text-decoration:underline;
+		}
+		
+/*------- secondary_nav --------*/
+
+#secondary_nav {
+	position:absolute;
+	top:10px;
+	right:10px;
+}
+
+/*------- tertiary_nav -------- */
+
+#tertiary_nav {
+	/*float:right;*/
+	clear:both;
+	top:15px;
+	height:10px;
+	margin-left:438px;
+}
+	
+	#profile #tertiary_nav {
+		top:138px !important;
+		right:10px;}
+	
+	#tertiary_nav li a { color:#fff; }
+	
+/*------- recipe_nav -------- */
+
+.recipe_nav {padding-top:20px;}
+
+	.recipe .recipe_nav a{
+		color:#3585be;
+		font-size:1em;
+		text-decoration:underline;
+	}			
+	
+	.recipe_nav a.recipe-link,
+	.recipe_nav a.print {
+		display:block;
+		float:left;
+	}			
+		.recipe .recipe_nav a.recipe-link{
+			height:15px;
+			width:112px;
+			background:url("http://www.peacecorps.gov/teens/images/buttons/recipe_idea.gif") no-repeat 0 4px;
+		}	
+	
+		.recipe .recipe_nav a.print {
+			margin:0 4px 0 270px;
+			padding-left:18px;
+			background:url("http://www.peacecorps.gov/teens/images/buttons/printer_icon.gif") no-repeat 2px 2px;					
+		}
+
+
+/*------- sitemap nav -------- */
+
+.sitemap li{list-style:none;}
+
+ul.sitemap a{
+	font-size:1.4em;
+	color:#7f2700 !important;
+	text-decoration:none;
+}
+
+ul.sitemap a:hover {
+	text-decoration:underline;
+	color:#7f2700 !important;
+}
+
+ul.sitemap ul li a {
+	font-size:1.2em;
+	color:#df9f10 !important;
+}
+
+ul.sitemap ul ul li a {
+	font-size:1.1em;
+}
+
+
