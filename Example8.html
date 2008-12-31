@@ -1,0 +1,337 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Make Your Own Book with Blurb</title>
+
+  <!-- Framework CSS -->
+	<link rel="stylesheet" href="Blueprint/blueprint/screen.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="Blueprint/blueprint/print.css" type="text/css" media="print">
+  <!--[if IE]><link rel="stylesheet" href="Blueprint/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+
+	
+	<!-- Import fancy-type plugin for the sample page. -->
+	<link rel="stylesheet" href="Blueprint/blueprint/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
+	
+<style type="text/css">
+<!--
+body {
+	font-size: 12px;
+	color: #333333;
+}
+h1 {font-family: Tahoma;}
+h2 {
+	font: normal 20px Arial, Helvetica, sans-serif;
+	line-height: 25px;
+	color: black;
+	margin-bottom: 15px;
+	margin-top: 0px;
+	font-size: 18px;
+	color: #535143;
+}
+
+h6 {
+	font-size: 14px;
+	text-align: center;
+	font-variant: small-caps;
+	color: #000000;
+}
+#home-buttons{ height:102px; position:relative; }
+.home-button{ float:left; margin-right:5px; margin-bottom:7px; } 
+.home-button a{color:#fff; height:62px; width:290px; text-indent:-9999px; display:block; outline:0; }
+.home-button a:hover{background-position:0 62px}
+.home-button.pricing a{ background-image:url(Example_files/pricing.gif);}
+.home-button.learn-more a{ background-image:url(Example_files/learn_more.gif); }
+.home-button.booksmart a{ background-image:url(Example_files/download_booksmart.gif);}
+.slickshadow
+{
+  border:2px solid #D8D4C0;
+  border-top:1px solid #F0ECD7;
+  border-left:1px solid #F0ECD7;
+}
+
+#long-box{  height:260px; float:left; overflow:hidden;}
+#long-box{width:587px; margin-right:10px;}
+.box-content{padding:10px;}
+#long-box ul{list-style-type:none; margin:0; padding:0;}
+#long-box ul li{position:relative; width:150px; padding:10px; float:left; margin-right:10px; height:180px;}
+.staffpick_details{position:absolute; bottom:5px;}
+.staffpick_details a{color:#535143;}
+.staffpick_details a:hover{color:#fd7820;}
+img.staffpick_thumb{background:#fff; margin-bottom:10px; padding:1px; position:relative; left:-1px;}
+#long-box ul li b{display:block; height:2.6em; overflow:hidden;}
+#long-box ul li img.staffpick_thumb{background:#fff; margin-bottom:10px; padding:1px;}
+#long-box ul li b{display:block; height:2.6em; overflow:hidden;}
+#long-box ul p.nofeatured{margin-left:10px;}
+
+
+#superfooter a{ color:#535143; }
+ #superfooter a:hover{ color:#fd7820; }
+ #superfooter ul{ font-size:11px; margin:0; margin-bottom:20px; list-style-type:none; }
+ #superfooter ul li.supertop{width:180px; float:left;}
+ #superfooter ul li.supertop.wide{width:195px; }
+ #superfooter ul li.supertop.last{width:190px; }
+ #superfooter ul li.heading{ border-bottom:1px solid #d2e2ae; margin-bottom:5px !important; padding-bottom:5px; }
+ #superfooter ul li.heading a{ font-weight:bold;}
+ #superfooter ul li ul.supersub{ list-style-type:none; margin:5px 0 0 0; padding:5px 0 0 0; }
+ #superfooter ul li ul.supersub li{ padding-left:41px; margin-bottom:1px; }
+
+ #superfooter ul li ul.supersub li.separate{ height:1px; border-bottom:1px dotted #d2e2ae; }
+
+#bottomPaneCopyright {
+	font: normal 11px Arial, Helvetica, sans-serif;
+	line-height: 11px;
+	color: #993300;
+}
+
+#bottomPaneMenu {
+	font: normal 11px Arial, Helvetica, sans-serif;
+	line-height: 11px;
+	color: #993300;
+}
+
+#bottomPaneMenu a {
+	color: #9f3702;
+	font-weight: normal;
+}
+
+#bottomPane {
+    position: relative;
+    background-color: #535143;
+    left: 0px;
+    top: 0px;
+    height: 30px;
+    width: 960px;
+}
+
+#bottomPaneNavigation {
+    width: 100%;
+}
+
+#bottomPaneNavigation * {
+    color: #f9f4e4 !important;
+}
+
+#bottomPaneCopyright {
+    float: right;
+    margin-top: 6px;
+    margin-left: 10px;
+    padding: 3px;
+    padding-right: 10px;
+}
+
+#bottomPaneMenu {
+	margin-top: 6px;
+    margin-right: 10px;
+    float: left;
+    padding: 3px;
+}
+
+
+.dot-it{background-image:url(Example_files/dot.gif); background-repeat:repeat-y; background-position:right; padding-right:8px; margin-right:3px; }
+
+-->
+</style>
+	
+</head>
+
+<body>
+
+	<div class="container">  
+		<h1>What will your book be?</h1>
+
+	<div class="span-24">
+		<img src="Example_files/02.jpg" class="top" alt="test">
+	</div>
+
+	<div id="home-buttons">
+		<div class="span-8">
+		<div class="home-button slickshadow learn-more">
+		
+		<a href="/learn_more">Learn More &raquo;</a>
+		</div></div>
+		<div class="span-8">
+		<div class="home-button slickshadow pricing">
+		<a href="/create/book/pricing">Pricing &raquo;</a>
+		</div></div>
+		
+		<div class="span-8 last">
+		<div class="home-button slickshadow booksmart">
+		<a href="/create/book/download">Download Blurb BookSmart&trade;</a>
+		</div></div>
+	</div>
+
+	<hr class="space">
+
+
+    <div id="boxwrap" class="clearfix">
+
+    <div class= "span-16">
+	  <div id="long-box" class="slickshadow">
+    
+      <h2>Blurb Bookstore: Staff Picks</h2>
+    
+    <div class="box-content">
+      <ul>
+      
+        
+          <li>
+            <div class="staffpick_details">
+              <a href="/bookstore/detail/503964"><img alt="Undersea, as listed under Sports &amp; Adventure" class="slickshadow staffpick_thumb" src="http://assets0.blurb.com/images/uploads/catalog/03/763303/503964-0f9fc10fc430f102b720a390083ad75c.jpg?1229322158" /></a>
+              <b><a href="/bookstore/detail/503964">Undersea</a></b>
+
+              by <a href="/user/ebfrazier">ebfrazier</a>
+            </div>
+          </li>
+        
+          <li>
+            <div class="staffpick_details">
+              <a href="/bookstore/detail/495972"><img alt="I Still Like Cooking Shows, as listed under Cooking" class="slickshadow staffpick_thumb" src="http://assets0.blurb.com/images/uploads/catalog/68/754368/495972-910b9a2f2c646a98379ba4e763cc3322.jpg?1229059158" /></a>
+              <b><a href="/bookstore/detail/495972">I Still Like Cooking Shows</a></b>
+
+              by <a href="/user/jmart767">jmart767</a>
+            </div>
+          </li>
+        
+          <li>
+            <div class="staffpick_details">
+              <a href="/bookstore/detail/509968"><img alt="BenoitP, as listed under Fine Art Photography" class="slickshadow staffpick_thumb" src="http://assets0.blurb.com/images/uploads/catalog/19/342219/509968-792e4053a89770f107d96b8371d38656.jpg?1229547898" /></a>
+              <b><a href="/bookstore/detail/509968">BenoitP</a></b>
+
+              by <a href="/user/benoitp">benoitp</a>
+            </div>
+          </li>
+        
+      
+      </ul>
+    </div>
+  </div>
+      
+    </div>  
+    <div class="span-8 last">  
+      <div id="webby-box" class="slickshadow" style="width:297px; height:112px; overflow:hidden; float:right; margin-bottom:10px;">
+        <a href="http://blog.blurb.com/index.php/2008/10/21/introducing-premium-paper/"><img alt="Introducing Premium Paper" height="112" src="http://assets0.blurb.com/images/home3/premium_home.jpg?1229638030" width="297" /></a>
+
+      </div>
+
+      <div class="slickshadow" style="width:297px; float:right;">
+        <h2>Get Inspired</h2>
+        <div class="box-content flip" style="padding-bottom:0; margin-left:10px; padding-top:8px;">
+          <a href="/learn_more/flip"><img alt="Open_book" src="http://assets0.blurb.com/images/home3/open_book.jpg?1229638030" /></a>
+          <p class="flip">Flip through some examples to get more book ideas. <a href="/learn_more/flip">Have a look &raquo;</a></p>
+        </div>
+
+      </div>
+	  
+	</div>
+      
+      
+    </div>
+
+
+	
+  <div id="superfooter" class="clearfix">
+  <ul class="clearfix">
+    <li class="supertop clearfix">
+      <ul class="supersub">        
+        <li class="heading"><a href="/learn_more">Learn More</a></li>
+
+        <li><a href="/learn_more/booksmart">Blurb BookSmart</a></li>
+        <li><a href="/learn_more/books">Bookstore-Quality Books</a></li>
+        <li><a href="/learn_more/share">Share, Promote, Sell</a></li>
+        <li><a href="/about/blurb_partners">Blurb Partners</a></li>                                                  
+        <li><a href="http://blog.blurb.com">Blurberati Blog</a></li>
+				<li><a href="/create/book/download">Download BookSmart</a></li>
+
+      </ul>
+    </li>
+
+    <li class="supertop clearfix">            
+      <ul class="supersub">
+        <li class="heading"><a href="/create/book/pricing">Pricing</a></li>
+        <li><a href="/create/book/pricing">Book Pricing</a></li>
+				<li><a href="/create/book/shipping">Shipping Information</a></li>
+
+        <li><a href="/shipping_calculator">Shipping Calculator</a></li>
+        <li><a href="/my/seller/info">Set Your Price</a></li>
+      </ul>
+    </li>
+
+
+    <li class="supertop clearfix wide">        
+      <ul class="supersub">
+        <li class="heading"><a href="/learn_more/flip">Book Ideas</a></li>
+
+        <li><a href="/learn_more/flip">Get Inspired</a></li>
+        <li><a href="/create/book/photobook">Photo Books</a></li>
+        <li><a href="/create/book/textandpictures">Text and Pictures</a></li>
+        <li><a href="/create/book/wedding_books">Wedding Books</a></li>
+        <li><a href="/create/book/portfolio">Portfolios</a></li>
+        <li><a href="/create/book/blogbook">Blog Books</a></li>
+
+        <li><a href="/create/book/cookbook">Cookbooks</a></li>
+      </ul>
+    </li>
+
+    <li class="supertop clearfix wide">
+      <ul class="supersub">
+        <li class="heading"><a href="/bookstore">Blurb Bookstore</a></li>
+        <li><a href="/bookstore">Bookstore Home</a></li>
+
+        <li><a href="/bookstore/new">Just Published</a></li>
+        <li><a href="/bookstore/featured">Staff Picks</a></li>
+        <li><a href="/bookstore/popular">Best Sellers</a></li>
+        <li><a href="/bookstore/category/Arts%2Band%2BPhotography">Arts and Photography</a></li>
+        <li><a href="/bookstore/category/Wedding">Wedding</a></li>
+        <li><a href="/bookstore/category/Travel">Travel</a></li>
+
+        <li><a href="/bookstore/category">All Book Categories...</a></li>
+      </ul>
+    </li>
+    
+    <li class="supertop clearfix wide last">
+      <ul class="supersub">
+        <li class="heading"><a href="/help">Help</a></li>
+        <li><a href="/help">Search FAQs</a></li>
+
+        <li><a href="http://forums.blurb.com">Forums</a></li>
+        <li><a href="/about/returns">Return Policy</a></li>
+        <li><a href="/blurb_nation">Blurb Nation</a></li>
+      </ul>
+    </li>
+    
+  </ul>
+</div>
+
+
+   
+    <div id="bottomPane">
+        <div id="bottomPaneNavigation">
+    <span id="bottomPaneMenu">
+      &nbsp; <a href="http://blog.blurb.com/" class="dot-it">Blurberati Blog</a>
+
+      <a href="http://www.blurb.com/corporate/about" class="dot-it">About Blurb</a>
+      <a href="http://www.blurb.com/book/pricing" class="dot-it">Pricing &amp; Shipping</a>
+      <a href="http://www.blurb.com/corporate/returns" class="dot-it">Return Policy</a>
+      <a href="http://www.blurb.com/corporate/legal" class="dot-it">Policies &amp; Legal</a>
+      <a href="http://www.blurb.com/corporate/privacy" class="dot-it">Privacy</a>        
+      <a href="http://blurb.custhelp.com/cgi-bin/blurb.cfg/php/enduser/home_std_alp.php" onclick="try{pageTracker._link(this.href);}catch(e){}; return true;">Help</a>
+
+	    
+      
+    </span>
+
+    <span id="bottomPaneCopyright">&copy; 2008 Blurb</span>
+</div>
+    </div> <!-- bottomPane -->
+	
+	
+	
+	
+	
+
+	</div>
+
+</body>
+</html>
