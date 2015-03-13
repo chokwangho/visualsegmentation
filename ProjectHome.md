@@ -1,0 +1,1 @@
+Ruby script for visual segmentation of web pages
